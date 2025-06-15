@@ -23,46 +23,7 @@
             --white: #FAFAFB;
         }
 
-        /* RTL Support */
-        [dir="rtl"] {
-            direction: rtl;
-            text-align: right;
-        }
 
-        [dir="rtl"] body {
-            font-family: 'Noto Sans Arabic', "Inter", sans-serif;
-        }
-
-        [dir="rtl"] .window-controls {
-            left: auto;
-            right: 24px;
-        }
-
-        [dir="rtl"] .form {
-            text-align: right;
-        }
-
-        [dir="rtl"] input {
-            text-align: right;
-        }
-
-        [dir="rtl"] .btn-primary {
-            flex-direction: row-reverse;
-        }
-
-        [dir="rtl"] .device-info,
-        [dir="rtl"] .product-info,
-        [dir="rtl"] .link-info {
-            flex-direction: row-reverse;
-        }
-
-        [dir="rtl"] .link-url {
-            flex-direction: row-reverse;
-        }
-
-        [dir="rtl"] .link-url input {
-            text-align: right;
-        }
 
         /* Reset and base styles */
         * {
@@ -77,6 +38,49 @@
             background: black;
             color: var(--white);
             min-height: 100vh;
+        }
+
+        /* RTL Support */
+        [dir="rtl"] {
+            font-family: 'Noto Sans Arabic', "Inter", sans-serif;
+        }
+
+        [dir="rtl"] .card-content {
+            text-align: right;
+        }
+
+        [dir="rtl"] .header {
+            text-align: center;
+        }
+
+        [dir="rtl"] .form {
+            direction: rtl;
+        }
+
+        [dir="rtl"] .terms {
+            text-align: center;
+        }
+
+        [dir="rtl"] .contact-info {
+            text-align: center;
+        }
+
+        [dir="rtl"] .content-section {
+            text-align: right;
+        }
+
+        [dir="rtl"] .device-info,
+        [dir="rtl"] .product-info,
+        [dir="rtl"] .link-info {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .link-url {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .link-url input {
+            text-align: right;
         }
 
         a {
@@ -151,6 +155,11 @@
             display: flex;
             gap: 8px;
             z-index: 10;
+        }
+
+        [dir="rtl"] .window-controls {
+            left: auto;
+            right: 24px;
         }
 
         .control-btn {
@@ -390,6 +399,12 @@
         .language-selector {
             position: relative;
             margin-top: 16px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .language-dropdown {
+            position: relative;
             display: inline-block;
         }
 
@@ -398,52 +413,89 @@
             align-items: center;
             gap: 8px;
             padding: 8px 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #13151A;
+            border: 1px solid #1A1E27;
             border-radius: 6px;
+            color: var(--white);
+            font-size: 12px;
             cursor: pointer;
             transition: all 0.2s;
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.7);
+            min-width: 120px;
+            justify-content: space-between;
         }
 
         .language-trigger:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
+            background: #1A1E27;
+            border-color: #252935;
         }
 
-        .language-flag {
+        .language-trigger.active {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(56, 152, 255, 0.2);
+        }
+
+        .flag-icon {
             width: 16px;
             height: 12px;
             border-radius: 2px;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* UK Flag */
+        .flag-uk {
+            background: linear-gradient(to bottom, #012169 0%, #012169 33%, #ffffff 33%, #ffffff 66%, #012169 66%);
+            position: relative;
+        }
+
+        .flag-uk::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 30%, #ffffff 30%, #ffffff 35%, #c8102e 35%, #c8102e 40%, #ffffff 40%, #ffffff 45%, transparent 45%),
+                linear-gradient(-45deg, transparent 30%, #ffffff 30%, #ffffff 35%, #c8102e 35%, #c8102e 40%, #ffffff 40%, #ffffff 45%, transparent 45%),
+                linear-gradient(90deg, transparent 45%, #ffffff 45%, #ffffff 50%, #c8102e 50%, #c8102e 55%, #ffffff 55%, #ffffff 60%, transparent 60%),
+                linear-gradient(0deg, transparent 45%, #ffffff 45%, #ffffff 50%, #c8102e 50%, #c8102e 55%, #ffffff 55%, #ffffff 60%, transparent 60%);
+        }
+
+        /* Saudi Arabia Flag */
+        .flag-sa {
+            background: #006c35;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 10px;
         }
 
-        .language-flag.en {
-            background: linear-gradient(to bottom, #012169 33%, #fff 33%, #fff 66%, #c8102e 66%);
+        .flag-sa::before {
+            content: '🗡️';
+            position: absolute;
+            font-size: 8px;
+            color: white;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
-        .language-flag.ar {
-            background: linear-gradient(to bottom, #000 33%, #fff 33%, #fff 66%, #ce1126 66%);
-        }
-
-        .language-arrow {
+        .dropdown-arrow {
             width: 0;
             height: 0;
             border-left: 4px solid transparent;
             border-right: 4px solid transparent;
-            border-bottom: 4px solid rgba(255, 255, 255, 0.5);
+            border-top: 4px solid #8F8F91;
             transition: transform 0.2s;
         }
 
-        .language-trigger.open .language-arrow {
+        .language-trigger.active .dropdown-arrow {
             transform: rotate(180deg);
         }
 
-        .language-dropdown {
+        .language-options {
             position: absolute;
             bottom: 100%;
             left: 0;
@@ -451,16 +503,16 @@
             background: #13151A;
             border: 1px solid #1A1E27;
             border-radius: 6px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             opacity: 0;
             visibility: hidden;
             transform: translateY(8px);
             transition: all 0.2s ease;
             z-index: 1000;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
-        .language-dropdown.open {
+        .language-options.show {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
@@ -469,33 +521,23 @@
         .language-option {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            cursor: pointer;
-            transition: background 0.2s;
-            font-size: 12px;
+            gap: 8px;
+            padding: 10px 12px;
             color: var(--white);
+            font-size: 12px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            border-radius: 4px;
+            margin: 2px;
         }
 
         .language-option:hover {
-            background: rgba(255, 255, 255, 0.05);
+            background: #1A1E27;
         }
 
-        .language-option.active {
-            background: rgba(56, 152, 255, 0.1);
+        .language-option.selected {
+            background: rgba(56, 152, 255, 0.2);
             color: #3898FF;
-        }
-
-        .language-option:first-child {
-            border-radius: 6px 6px 0 0;
-        }
-
-        .language-option:last-child {
-            border-radius: 0 0 6px 6px;
-        }
-
-        .language-option .language-flag {
-            flex-shrink: 0;
         }
 
         /* Content sections for other tabs */
@@ -855,6 +897,19 @@
             transition: transform 0.2s ease;
         }
 
+        /* RTL Support for Segmented Control */
+        [dir="rtl"] .ios13-segmented-control .selection {
+            transform-origin: right;
+        }
+
+        [dir="rtl"] .ios13-segmented-control .option:first-of-type {
+            order: 2;
+        }
+
+        [dir="rtl"] .ios13-segmented-control .option:last-of-type {
+            order: 1;
+        }
+
         .ios13-segmented-control .option label span {
             display: block;
             position: relative;
@@ -1172,8 +1227,8 @@
                             </div>
 
                             <form class="form">
-                                <input type="text" placeholder="Username" data-placeholder-en="Username" data-placeholder-ar="اسم المستخدم">
-                                <input type="password" placeholder="Password" data-placeholder-en="Password" data-placeholder-ar="كلمة المرور">
+                                <input type="text" data-placeholder-en="Username" data-placeholder-ar="اسم المستخدم" placeholder="Username">
+                                <input type="password" data-placeholder-en="Password" data-placeholder-ar="كلمة المرور" placeholder="Password">
                                 <button type="submit" class="btn-primary">
                                     <span class="btn-text" data-en="Continue" data-ar="متابعة">Continue</span>
                                     <span class="shortcut">⏎</span>
@@ -1185,24 +1240,28 @@
                             </form>
 
                             <p class="contact-info">
-                                <span data-en="In case of any issues, please contact us at" data-ar="في حالة وجود أي مشاكل، يرجى الاتصال بنا على">In case of any issues, please contact us at</span> <a href="mailto:team@octalink.com">team@octalink.com</a>
+                                <span data-en="In case of any issues, please contact us at" data-ar="في حالة وجود أي مشاكل، يرجى التواصل معنا على">In case of any issues, please contact us at</span> <a href="mailto:team@octalink.com">team@octalink.com</a>
                             </p>
 
                             <!-- Language Selector -->
                             <div class="language-selector">
-                                <div class="language-trigger" id="languageTrigger">
-                                    <div class="language-flag en" id="currentFlag"></div>
-                                    <span id="currentLanguage" data-en="English" data-ar="العربية">English</span>
-                                    <div class="language-arrow"></div>
-                                </div>
-                                <div class="language-dropdown" id="languageDropdown">
-                                    <div class="language-option active" data-lang="en">
-                                        <div class="language-flag en"></div>
-                                        <span>English</span>
+                                <div class="language-dropdown">
+                                    <div class="language-trigger" id="languageTrigger">
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <span class="flag-icon flag-uk" id="currentFlag"></span>
+                                            <span id="currentLanguage">English</span>
+                                        </div>
+                                        <div class="dropdown-arrow"></div>
                                     </div>
-                                    <div class="language-option" data-lang="ar">
-                                        <div class="language-flag ar"></div>
-                                        <span>العربية</span>
+                                    <div class="language-options" id="languageOptions">
+                                        <div class="language-option selected" data-lang="en">
+                                            <span class="flag-icon flag-uk"></span>
+                                            <span>English</span>
+                                        </div>
+                                        <div class="language-option" data-lang="ar">
+                                            <span class="flag-icon flag-sa"></span>
+                                            <span>العربية</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1253,14 +1312,14 @@
                                     </div>
                                     <div class="device-item">
                                         <div class="device-info">
-                                            <strong data-en="Upload" data-ar="رفع">Upload</strong>
+                                            <strong data-en="Upload" data-ar="الرفع">Upload</strong>
                                             <!-- <span class="device-status inactive">Inactive</span> -->
                                         </div>
                                         <p>1980Mbps</p>
                                     </div>
                                     <div class="device-item">
                                         <div class="device-info">
-                                            <strong data-en="Download" data-ar="تحميل">Download</strong>
+                                            <strong data-en="Download" data-ar="التحميل">Download</strong>
                                             <!-- <span class="device-status inactive">Inactive</span> -->
                                         </div>
                                         <p>5980Mbps</p>
@@ -1325,7 +1384,7 @@
                                             <strong>$3,00</strong>
                                             <span class="product-status valid" data-en="Unlimited" data-ar="غير محدود">Unlimited</span>
                                         </div>
-                                        <p data-en="3 Day" data-ar="3 أيام">3 Day</p>
+                                        <p data-en="3 Day" data-ar="ثلاثة أيام">3 Day</p>
                                         <code class="product-value" data-en="Please go to the cashier to place your order" data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
                                     </div>
                                 </div>
@@ -1442,8 +1501,78 @@
     </main>
 
     <script>
+        // Language functionality
+        let currentLanguage = 'en';
+
+        // Load saved language from localStorage
+        function loadSavedLanguage() {
+            const savedLanguage = localStorage.getItem('selectedLanguage');
+            if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ar')) {
+                currentLanguage = savedLanguage;
+                switchLanguage(currentLanguage);
+            }
+        }
+
+        // Save language to localStorage
+        function saveLanguage(language) {
+            localStorage.setItem('selectedLanguage', language);
+        }
+
+        function switchLanguage(language) {
+            currentLanguage = language;
+            saveLanguage(language);
+            
+            // Update HTML direction
+            document.documentElement.setAttribute('dir', language === 'ar' ? 'rtl' : 'ltr');
+            document.documentElement.setAttribute('lang', language);
+            
+            // Update all text content
+            const elements = document.querySelectorAll('[data-en][data-ar]');
+            elements.forEach(element => {
+                const text = element.getAttribute(`data-${language}`);
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+            
+            // Update placeholders
+            const inputs = document.querySelectorAll('input[data-placeholder-en][data-placeholder-ar]');
+            inputs.forEach(input => {
+                const placeholder = input.getAttribute(`data-placeholder-${language}`);
+                if (placeholder) {
+                    input.placeholder = placeholder;
+                }
+            });
+            
+            // Update language selector
+            const currentFlag = document.getElementById('currentFlag');
+            const currentLanguageText = document.getElementById('currentLanguage');
+            
+            if (language === 'ar') {
+                currentFlag.className = 'flag-icon flag-sa';
+                currentLanguageText.textContent = 'العربية';
+            } else {
+                currentFlag.className = 'flag-icon flag-uk';
+                currentLanguageText.textContent = 'English';
+            }
+            
+            // Update selected option
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.classList.remove('selected');
+                if (option.getAttribute('data-lang') === language) {
+                    option.classList.add('selected');
+                }
+            });
+
+            // Update segmented control position for RTL
+            updatePillPosition();
+        }
+
         // Tab functionality
         document.addEventListener('DOMContentLoaded', function () {
+            // Load saved language first
+            loadSavedLanguage();
+
             const tabs = document.querySelectorAll('.tab');
             const tabContents = document.querySelectorAll('.tab-content');
 
@@ -1470,9 +1599,7 @@
                     document.execCommand('copy');
 
                     const originalText = this.textContent;
-                    const currentLang = document.documentElement.getAttribute('dir') === 'rtl' ? 'ar' : 'en';
-                    const copiedText = currentLang === 'ar' ? 'تم النسخ!' : 'Copied!';
-                    
+                    const copiedText = currentLanguage === 'ar' ? 'تم النسخ!' : 'Copied!';
                     this.textContent = copiedText;
                     setTimeout(() => {
                         this.textContent = originalText;
@@ -1482,76 +1609,29 @@
 
             // Language selector functionality
             const languageTrigger = document.getElementById('languageTrigger');
-            const languageDropdown = document.getElementById('languageDropdown');
-            const currentFlag = document.getElementById('currentFlag');
-            const currentLanguage = document.getElementById('currentLanguage');
-            const languageOptions = document.querySelectorAll('.language-option');
+            const languageOptions = document.getElementById('languageOptions');
 
             languageTrigger.addEventListener('click', function(e) {
                 e.stopPropagation();
-                languageDropdown.classList.toggle('open');
-                languageTrigger.classList.toggle('open');
+                this.classList.toggle('active');
+                languageOptions.classList.toggle('show');
             });
 
             // Close dropdown when clicking outside
             document.addEventListener('click', function() {
-                languageDropdown.classList.remove('open');
-                languageTrigger.classList.remove('open');
+                languageTrigger.classList.remove('active');
+                languageOptions.classList.remove('show');
             });
 
-            languageOptions.forEach(option => {
+            // Language option selection
+            document.querySelectorAll('.language-option').forEach(option => {
                 option.addEventListener('click', function() {
                     const selectedLang = this.getAttribute('data-lang');
-                    
-                    // Update active state
-                    languageOptions.forEach(opt => opt.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Update trigger display
-                    currentFlag.className = `language-flag ${selectedLang}`;
-                    
-                    // Close dropdown
-                    languageDropdown.classList.remove('open');
-                    languageTrigger.classList.remove('open');
-                    
-                    // Apply language changes
-                    changeLanguage(selectedLang);
+                    switchLanguage(selectedLang);
+                    languageTrigger.classList.remove('active');
+                    languageOptions.classList.remove('show');
                 });
             });
-
-            function changeLanguage(lang) {
-                const html = document.documentElement;
-                const elementsWithLangData = document.querySelectorAll('[data-' + lang + ']');
-                const inputs = document.querySelectorAll('input[data-placeholder-' + lang + ']');
-                
-                // Set direction and lang attributes
-                if (lang === 'ar') {
-                    html.setAttribute('dir', 'rtl');
-                    html.setAttribute('lang', 'ar');
-                } else {
-                    html.setAttribute('dir', 'ltr');
-                    html.setAttribute('lang', 'en');
-                }
-                
-                // Update text content
-                elementsWithLangData.forEach(element => {
-                    const text = element.getAttribute('data-' + lang);
-                    if (text) {
-                        element.textContent = text;
-                    }
-                });
-                
-                // Update input placeholders
-                inputs.forEach(input => {
-                    const placeholder = input.getAttribute('data-placeholder-' + lang);
-                    if (placeholder) {
-                        input.setAttribute('placeholder', placeholder);
-                    }
-                });
-                
-                // Update current language display
-                currentLanguage.textContent = lang === 'ar' ? 'العربية' : 'English';
-            }
         });
 
     </script>
@@ -1580,17 +1660,31 @@
             forEachElement(
                 SEGMENTED_CONTROL_INDIVIDUAL_SEGMENT_SELECTOR,
                 (elem, index) => {
-                    if (elem.checked) moveBackgroundPillToElement(elem, index);
+                    if (elem.checked) {
+                        moveBackgroundPillToElement(elem, index);
+                    }
                 }
             );
         }
 
         function moveBackgroundPillToElement(elem, index) {
-            console.log(elem.offsetWidth * index);
+            const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+            const segmentedControl = elem.closest('.ios13-segmented-control');
+            const totalOptions = segmentedControl.querySelectorAll('.option').length;
+            
+            let translateX;
+            if (isRTL) {
+                // In RTL, reverse the index calculation
+                translateX = elem.offsetWidth * (totalOptions - 1 - index);
+            } else {
+                translateX = elem.offsetWidth * index;
+            }
+            
             document.querySelector(
                 SEGMENTED_CONTROL_BACKGROUND_PILL_SELECTOR
-            ).style.transform = "translateX(" + elem.offsetWidth * index + "px)";
+            ).style.transform = "translateX(" + translateX + "px)";
         }
+        
         // Helper functions
         function forEachElement(className, fn) {
             Array.from(document.querySelectorAll(className)).forEach(fn);
