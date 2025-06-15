@@ -11,6 +11,7 @@
     <link rel="manifest" href="favicon_io/site.webmanifest">
     <style>
         @import url("https://fonts.googleapis.com/css?family=Inter:500,400");
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500&display=swap');
     </style>
     <style>
         /* Load font Helvetica Neue */
@@ -22,7 +23,46 @@
             --white: #FAFAFB;
         }
 
+        /* RTL Support */
+        [dir="rtl"] {
+            direction: rtl;
+            text-align: right;
+        }
 
+        [dir="rtl"] body {
+            font-family: 'Noto Sans Arabic', "Inter", sans-serif;
+        }
+
+        [dir="rtl"] .window-controls {
+            left: auto;
+            right: 24px;
+        }
+
+        [dir="rtl"] .form {
+            text-align: right;
+        }
+
+        [dir="rtl"] input {
+            text-align: right;
+        }
+
+        [dir="rtl"] .btn-primary {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .device-info,
+        [dir="rtl"] .product-info,
+        [dir="rtl"] .link-info {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .link-url {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .link-url input {
+            text-align: right;
+        }
 
         /* Reset and base styles */
         * {
@@ -344,6 +384,118 @@
 
         .contact-info a:hover {
             opacity: 0.8;
+        }
+
+        /* Language Selector Styles */
+        .language-selector {
+            position: relative;
+            margin-top: 16px;
+            display: inline-block;
+        }
+
+        .language-trigger {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .language-trigger:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .language-flag {
+            width: 16px;
+            height: 12px;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+
+        .language-flag.en {
+            background: linear-gradient(to bottom, #012169 33%, #fff 33%, #fff 66%, #c8102e 66%);
+        }
+
+        .language-flag.ar {
+            background: linear-gradient(to bottom, #000 33%, #fff 33%, #fff 66%, #ce1126 66%);
+        }
+
+        .language-arrow {
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-bottom: 4px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.2s;
+        }
+
+        .language-trigger.open .language-arrow {
+            transform: rotate(180deg);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            right: 0;
+            background: #13151A;
+            border: 1px solid #1A1E27;
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: all 0.2s ease;
+            z-index: 1000;
+            margin-bottom: 8px;
+        }
+
+        .language-dropdown.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 12px;
+            color: var(--white);
+        }
+
+        .language-option:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .language-option.active {
+            background: rgba(56, 152, 255, 0.1);
+            color: #3898FF;
+        }
+
+        .language-option:first-child {
+            border-radius: 6px 6px 0 0;
+        }
+
+        .language-option:last-child {
+            border-radius: 0 0 6px 6px;
+        }
+
+        .language-option .language-flag {
+            flex-shrink: 0;
         }
 
         /* Content sections for other tabs */
@@ -973,23 +1125,23 @@
                     <nav class="tabs">
                         <div class="tab active" data-tab="general">
                             <img src="assets/img/login-icon.svg" alt="General icon" />
-                            <span>Login</span>
+                            <span data-en="Login" data-ar="تسجيل الدخول">Login</span>
                         </div>
                         <div class="tab" data-tab="devices">
                             <img src="assets/img/status-icon.svg" alt="Devices icon" />
-                            <span>Status</span>
+                            <span data-en="Status" data-ar="الحالة">Status</span>
                         </div>
                         <div class="tab" data-tab="product-values">
                             <img src="assets/img/voucher-icon.svg" alt="License keys icon" />
-                            <span>Voucher</span>
+                            <span data-en="Voucher" data-ar="قسيمة">Voucher</span>
                         </div>
                         <div class="tab" data-tab="subscriptions">
                             <img src="assets/img/member-icon.svg" alt="Subscriptions icon" />
-                            <span>Member</span>
+                            <span data-en="Member" data-ar="عضو">Member</span>
                         </div>
                         <div class="tab" data-tab="shareable-links">
                             <img src="assets/img/contact-icon.svg" alt="Shareable links icon" />
-                            <span>Contact</span>
+                            <span data-en="Contact" data-ar="اتصال">Contact</span>
                         </div>
                     </nav>
 
@@ -1001,8 +1153,8 @@
                                     <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
                                 </div>
                                 <div class="title">
-                                    <h1>Welcome to OctaLink</h1>
-                                    <p>Enter your username & password to continue</p>
+                                    <h1 data-en="Welcome to OctaLink" data-ar="مرحباً بك في أوكتا لينك">Welcome to OctaLink</h1>
+                                    <p data-en="Enter your username & password to continue" data-ar="أدخل اسم المستخدم وكلمة المرور للمتابعة">Enter your username & password to continue</p>
                                 </div>
                             </div>
                             <div class="ios13-segmented-control">
@@ -1010,32 +1162,50 @@
 
                                 <div class="option">
                                     <input type="radio" id="metro" name="sample" value="metro" checked>
-                                    <label for="metro"><span>Voucher</span></label>
+                                    <label for="metro"><span data-en="Voucher" data-ar="قسيمة">Voucher</span></label>
                                 </div>
 
                                 <div class="option">
                                     <input type="radio" id="bus" name="sample" value="bus">
-                                    <label for="bus"><span>Member</span></label>
+                                    <label for="bus"><span data-en="Member" data-ar="عضو">Member</span></label>
                                 </div>
                             </div>
 
                             <form class="form">
-                                <input type="text" placeholder="Username">
-                                <input type="password" placeholder="Password">
+                                <input type="text" placeholder="Username" data-placeholder-en="Username" data-placeholder-ar="اسم المستخدم">
+                                <input type="password" placeholder="Password" data-placeholder-en="Password" data-placeholder-ar="كلمة المرور">
                                 <button type="submit" class="btn-primary">
-                                    <span class="btn-text">Continue</span>
+                                    <span class="btn-text" data-en="Continue" data-ar="متابعة">Continue</span>
                                     <span class="shortcut">⏎</span>
                                 </button>
                                 <p class="terms">
-                                    By continuing, you agree to the <a href="#">Terms of Service</a> and<br />
-                                    <a href="#">Privacy Policy</a>.
+                                    <span data-en="By continuing, you agree to the" data-ar="بالمتابعة، فإنك توافق على">By continuing, you agree to the</span> <a href="#" data-en="Terms of Service" data-ar="شروط الخدمة">Terms of Service</a> <span data-en="and" data-ar="و">and</span><br />
+                                    <a href="#" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a>.
                                 </p>
                             </form>
 
                             <p class="contact-info">
-                                In case of any issues, please contact us at <a
-                                    href="mailto:team@screen.studio">team@octalink.com</a>
+                                <span data-en="In case of any issues, please contact us at" data-ar="في حالة وجود أي مشاكل، يرجى الاتصال بنا على">In case of any issues, please contact us at</span> <a href="mailto:team@octalink.com">team@octalink.com</a>
                             </p>
+
+                            <!-- Language Selector -->
+                            <div class="language-selector">
+                                <div class="language-trigger" id="languageTrigger">
+                                    <div class="language-flag en" id="currentFlag"></div>
+                                    <span id="currentLanguage" data-en="English" data-ar="العربية">English</span>
+                                    <div class="language-arrow"></div>
+                                </div>
+                                <div class="language-dropdown" id="languageDropdown">
+                                    <div class="language-option active" data-lang="en">
+                                        <div class="language-flag en"></div>
+                                        <span>English</span>
+                                    </div>
+                                    <div class="language-option" data-lang="ar">
+                                        <div class="language-flag ar"></div>
+                                        <span>العربية</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Devices Tab Content -->
@@ -1045,8 +1215,8 @@
                                     <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
                                 </div>
                                 <div class="title">
-                                    <h1>Information Connection</h1>
-                                    <p>Overview your network information</p>
+                                    <h1 data-en="Information Connection" data-ar="معلومات الاتصال">Information Connection</h1>
+                                    <p data-en="Overview your network information" data-ar="نظرة عامة على معلومات الشبكة">Overview your network information</p>
                                 </div>
                             </div>
 
@@ -1055,63 +1225,63 @@
                                 <div class="device-list">
                                     <div class="device-item">
                                         <div class="device-info">
-                                            <strong>Status Internet</strong>
-                                            <span class="device-status active">Connected</span>
+                                            <strong data-en="Status Internet" data-ar="حالة الإنترنت">Status Internet</strong>
+                                            <span class="device-status active" data-en="Connected" data-ar="متصل">Connected</span>
                                         </div>
                                         <p>180s</p>
                                     </div>
                                     <div class="device-item">
                                         <div class="device-info">
-                                            <strong>Username</strong>
+                                            <strong data-en="Username" data-ar="اسم المستخدم">Username</strong>
                                             <!-- <span class="device-status inactive">Inactive</span> -->
                                         </div>
                                         <p>Alif</p>
                                     </div>
                                     <div class="device-item">
                                         <div class="device-info">
-                                            <strong>IP Address</strong>
+                                            <strong data-en="IP Address" data-ar="عنوان IP">IP Address</strong>
                                             <!-- <span class="device-status inactive">Inactive</span> -->
                                         </div>
                                         <p>192.178.99.100.61</p>
                                     </div>
                                     <div class="device-item">
                                         <div class="device-info">
-                                            <strong>MAC Address</strong>
+                                            <strong data-en="MAC Address" data-ar="عنوان MAC">MAC Address</strong>
                                             <!-- <span class="device-status inactive">Inactive</span> -->
                                         </div>
                                         <p>AC:00CBSS:012XC:0092</p>
                                     </div>
                                     <div class="device-item">
                                         <div class="device-info">
-                                            <strong>Upload</strong>
+                                            <strong data-en="Upload" data-ar="رفع">Upload</strong>
                                             <!-- <span class="device-status inactive">Inactive</span> -->
                                         </div>
                                         <p>1980Mbps</p>
                                     </div>
                                     <div class="device-item">
                                         <div class="device-info">
-                                            <strong>Download</strong>
+                                            <strong data-en="Download" data-ar="تحميل">Download</strong>
                                             <!-- <span class="device-status inactive">Inactive</span> -->
                                         </div>
                                         <p>5980Mbps</p>
                                     </div>
                                     <div class="device-item">
                                         <div class="device-info">
-                                            <strong>Sisa Kuota</strong>
+                                            <strong data-en="Sisa Kuota" data-ar="الحصة المتبقية">Sisa Kuota</strong>
                                             <span class="device-status inactive">15GB</span>
                                         </div>
-                                        <p>Kuota anda hampir habis</p>
+                                        <p data-en="Kuota anda hampir habis" data-ar="حصتك على وشك النفاد">Kuota anda hampir habis</p>
                                     </div>
                                     <div class="device-item">
                                         <div class="device-info">
-                                            <strong>Status refresh</strong>
+                                            <strong data-en="Status refresh" data-ar="تحديث الحالة">Status refresh</strong>
                                             <!-- <span class="device-status inactive">Inactive</span> -->
                                         </div>
                                         <p>1s</p>
                                     </div>
                                     <div class="device-item">
                                         <div class="device-info">
-                                            <strong>Hotsname</strong>
+                                            <strong data-en="Hotsname" data-ar="اسم المضيف">Hotsname</strong>
                                             <!-- <span class="device-status inactive">Inactive</span> -->
                                         </div>
                                         <p>pondenet.com</p>
@@ -1127,8 +1297,8 @@
                                     <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
                                 </div>
                                 <div class="title">
-                                    <h1>Voucher Package</h1>
-                                    <p>Select your favorite package</p>
+                                    <h1 data-en="Voucher Package" data-ar="حزمة القسائم">Voucher Package</h1>
+                                    <p data-en="Select your favorite package" data-ar="اختر الحزمة المفضلة لديك">Select your favorite package</p>
                                 </div>
                             </div>
 
@@ -1137,26 +1307,26 @@
                                     <div class="product-item">
                                         <div class="product-info">
                                             <strong>$1,00</strong>
-                                            <span class="product-status valid">Unlimited</span>
+                                            <span class="product-status valid" data-en="Unlimited" data-ar="غير محدود">Unlimited</span>
                                         </div>
-                                        <p>1 Day</p>
-                                        <code class="product-value">Please go to the cashier to place your order</code>
+                                        <p data-en="1 Day" data-ar="يوم واحد">1 Day</p>
+                                        <code class="product-value" data-en="Please go to the cashier to place your order" data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
                                     </div>
                                     <div class="product-item">
                                         <div class="product-info">
                                             <strong>$2,00</strong>
-                                            <span class="product-status valid">Unlimited</span>
+                                            <span class="product-status valid" data-en="Unlimited" data-ar="غير محدود">Unlimited</span>
                                         </div>
-                                        <p>2 Day</p>
-                                        <code class="product-value">Please go to the cashier to place your order</code>
+                                        <p data-en="2 Day" data-ar="يومان">2 Day</p>
+                                        <code class="product-value" data-en="Please go to the cashier to place your order" data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
                                     </div>
                                     <div class="product-item">
                                         <div class="product-info">
                                             <strong>$3,00</strong>
-                                            <span class="product-status valid">Unlimited</span>
+                                            <span class="product-status valid" data-en="Unlimited" data-ar="غير محدود">Unlimited</span>
                                         </div>
-                                        <p>3 Day</p>
-                                        <code class="product-value">Please go to the cashier to place your order</code>
+                                        <p data-en="3 Day" data-ar="3 أيام">3 Day</p>
+                                        <code class="product-value" data-en="Please go to the cashier to place your order" data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
                                     </div>
                                 </div>
                             </div>
@@ -1169,8 +1339,8 @@
                                     <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
                                 </div>
                                 <div class="title">
-                                    <h1>Member Package</h1>
-                                    <p>Get longer internet access become a member</p>
+                                    <h1 data-en="Member Package" data-ar="حزمة العضوية">Member Package</h1>
+                                    <p data-en="Get longer internet access become a member" data-ar="احصل على وصول أطول للإنترنت كعضو">Get longer internet access become a member</p>
                                 </div>
                             </div>
 
@@ -1179,26 +1349,26 @@
                                     <div class="product-item">
                                         <div class="product-info">
                                             <strong>$7,00</strong>
-                                            <span class="product-status valid">Unlimited</span>
+                                            <span class="product-status valid" data-en="Unlimited" data-ar="غير محدود">Unlimited</span>
                                         </div>
-                                        <p>7 Day</p>
-                                        <code class="product-value">Please go to the cashier to place your order</code>
+                                        <p data-en="7 Day" data-ar="7 أيام">7 Day</p>
+                                        <code class="product-value" data-en="Please go to the cashier to place your order" data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
                                     </div>
                                     <div class="product-item">
                                         <div class="product-info">
                                             <strong>$15,00</strong>
-                                            <span class="product-status valid">Unlimited</span>
+                                            <span class="product-status valid" data-en="Unlimited" data-ar="غير محدود">Unlimited</span>
                                         </div>
-                                        <p>15 Day</p>
-                                        <code class="product-value">Please go to the cashier to place your order</code>
+                                        <p data-en="15 Day" data-ar="15 يوم">15 Day</p>
+                                        <code class="product-value" data-en="Please go to the cashier to place your order" data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
                                     </div>
                                     <div class="product-item">
                                         <div class="product-info">
                                             <strong>$30,00</strong>
-                                            <span class="product-status valid">Unlimited</span>
+                                            <span class="product-status valid" data-en="Unlimited" data-ar="غير محدود">Unlimited</span>
                                         </div>
-                                        <p>30 Day</p>
-                                        <code class="product-value">Please go to the cashier to place your order</code>
+                                        <p data-en="30 Day" data-ar="30 يوم">30 Day</p>
+                                        <code class="product-value" data-en="Please go to the cashier to place your order" data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
                                     </div>
                                 </div>
                             </div>
@@ -1211,13 +1381,13 @@
                                     <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
                                 </div>
                                 <div class="title">
-                                    <h1>Contact</h1>
-                                    <p>Need a help or want to get our services</p>
+                                    <h1 data-en="Contact" data-ar="اتصال">Contact</h1>
+                                    <p data-en="Need a help or want to get our services" data-ar="تحتاج مساعدة أو تريد الحصول على خدماتنا">Need a help or want to get our services</p>
                                 </div>
                             </div>
 
                             <div class="content-section">
-                                <h3>Follow Us</h3>
+                                <h3 data-en="Follow Us" data-ar="تابعنا">Follow Us</h3>
                                 <div class="links-list">
                                     <div class="link-item">
                                         <div class="link-info">
@@ -1227,7 +1397,7 @@
                                         <div class="link-url">
                                             <input type="text" value="https://www.instagram.com/pondenetofficial/"
                                                 readonly />
-                                            <button class="copy-btn">Copy</button>
+                                            <button class="copy-btn" data-en="Copy" data-ar="نسخ">Copy</button>
                                         </div>
                                     </div>
                                     <div class="link-item">
@@ -1237,29 +1407,29 @@
                                         <p>@pondenetytb</p>
                                         <div class="link-url">
                                             <input type="text" value="https://www.youtube.com/@pondenetytb" readonly />
-                                            <button class="copy-btn">Copy</button>
+                                            <button class="copy-btn" data-en="Copy" data-ar="نسخ">Copy</button>
                                         </div>
                                     </div>
                                     <div class="link-item">
                                         <div class="link-info">
                                             <strong>WhatsApp</strong>
                                         </div>
-                                        <p>Pondenet Customer Support</p>
+                                        <p data-en="Pondenet Customer Support" data-ar="دعم عملاء بوندنت">Pondenet Customer Support</p>
                                         <div class="link-url">
                                             <input type="text"
                                                 value="https://wa.me/6282293449024?text=Hello%20can%20I%20asking,%20about%20product%20PondeNet?"
                                                 readonly />
-                                            <button class="copy-btn">Copy</button>
+                                            <button class="copy-btn" data-en="Copy" data-ar="نسخ">Copy</button>
                                         </div>
                                     </div>
                                     <div class="link-item">
                                         <div class="link-info">
-                                            <strong>Email</strong>
+                                            <strong data-en="Email" data-ar="البريد الإلكتروني">Email</strong>
                                         </div>
-                                        <p>Pondenet Customer Care</p>
+                                        <p data-en="Pondenet Customer Care" data-ar="خدمة عملاء بوندنت">Pondenet Customer Care</p>
                                         <div class="link-url">
                                             <input type="text" value="customer.service@pondenet.com" readonly />
-                                            <button class="copy-btn">Copy</button>
+                                            <button class="copy-btn" data-en="Copy" data-ar="نسخ">Copy</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1300,12 +1470,88 @@
                     document.execCommand('copy');
 
                     const originalText = this.textContent;
-                    this.textContent = 'Copied!';
+                    const currentLang = document.documentElement.getAttribute('dir') === 'rtl' ? 'ar' : 'en';
+                    const copiedText = currentLang === 'ar' ? 'تم النسخ!' : 'Copied!';
+                    
+                    this.textContent = copiedText;
                     setTimeout(() => {
                         this.textContent = originalText;
                     }, 2000);
                 });
             });
+
+            // Language selector functionality
+            const languageTrigger = document.getElementById('languageTrigger');
+            const languageDropdown = document.getElementById('languageDropdown');
+            const currentFlag = document.getElementById('currentFlag');
+            const currentLanguage = document.getElementById('currentLanguage');
+            const languageOptions = document.querySelectorAll('.language-option');
+
+            languageTrigger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                languageDropdown.classList.toggle('open');
+                languageTrigger.classList.toggle('open');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function() {
+                languageDropdown.classList.remove('open');
+                languageTrigger.classList.remove('open');
+            });
+
+            languageOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const selectedLang = this.getAttribute('data-lang');
+                    
+                    // Update active state
+                    languageOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update trigger display
+                    currentFlag.className = `language-flag ${selectedLang}`;
+                    
+                    // Close dropdown
+                    languageDropdown.classList.remove('open');
+                    languageTrigger.classList.remove('open');
+                    
+                    // Apply language changes
+                    changeLanguage(selectedLang);
+                });
+            });
+
+            function changeLanguage(lang) {
+                const html = document.documentElement;
+                const elementsWithLangData = document.querySelectorAll('[data-' + lang + ']');
+                const inputs = document.querySelectorAll('input[data-placeholder-' + lang + ']');
+                
+                // Set direction and lang attributes
+                if (lang === 'ar') {
+                    html.setAttribute('dir', 'rtl');
+                    html.setAttribute('lang', 'ar');
+                } else {
+                    html.setAttribute('dir', 'ltr');
+                    html.setAttribute('lang', 'en');
+                }
+                
+                // Update text content
+                elementsWithLangData.forEach(element => {
+                    const text = element.getAttribute('data-' + lang);
+                    if (text) {
+                        element.textContent = text;
+                    }
+                });
+                
+                // Update input placeholders
+                inputs.forEach(input => {
+                    const placeholder = input.getAttribute('data-placeholder-' + lang);
+                    if (placeholder) {
+                        input.setAttribute('placeholder', placeholder);
+                    }
+                });
+                
+                // Update current language display
+                currentLanguage.textContent = lang === 'ar' ? 'العربية' : 'English';
+            }
         });
 
     </script>
