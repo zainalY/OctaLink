@@ -95,6 +95,14 @@
             margin: 0 auto;
         }
 
+        .border-hr-card {
+            height: 1px;
+            border: none;
+            color: #1A1E27;
+            background-color: #1A1E27;
+            margin: 10px 0;
+        }
+
         /* Window controls */
         .window-controls {
             position: absolute;
@@ -354,7 +362,7 @@
 
         /* Device list styles */
         .device-list,
-        .license-list,
+        .product-list,
         .links-list {
             display: flex;
             flex-direction: column;
@@ -362,7 +370,7 @@
         }
 
         .device-item,
-        .license-item,
+        .product-item,
         .link-item {
             /* Background transparent IOS */
             /* background: rgba(255, 255, 255, 0.05); */
@@ -377,7 +385,7 @@
         }
 
         .device-info,
-        .license-info,
+        .product-info,
         .link-info {
             display: flex;
             justify-content: space-between;
@@ -386,14 +394,14 @@
         }
 
         .device-info strong,
-        .license-info strong,
+        .product-info strong,
         .link-info strong {
             font-size: 14px;
             color: var(--white);
         }
 
         .device-status,
-        .license-status,
+        .product-status,
         .link-status {
             font-size: 12px;
             padding: 4px 8px;
@@ -402,7 +410,7 @@
         }
 
         .device-status.active,
-        .license-status.valid,
+        .product-status.valid,
         .link-status.active {
             background: rgba(34, 197, 94, 0.2);
             color: #22c55e;
@@ -414,14 +422,14 @@
         }
 
         .device-item p,
-        .license-item p,
+        .product-item p,
         .link-item p {
             font-size: 12px;
             color: #5A5B5E;
             margin: 0;
         }
 
-        .license-key {
+        .product-value {
             font-family: 'Courier New', monospace;
             font-size: 11px;
             background: rgba(255, 255, 255, 0.1);
@@ -433,14 +441,14 @@
         }
 
         /* Subscription styles */
-        .subscription-card {
+        /* .subscription-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             padding: 20px;
-        }
+        } */
 
-        .plan-info {
+        /* .plan-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -456,7 +464,7 @@
             font-size: 14px;
             color: #3898FF;
             font-weight: 500;
-        }
+        } */
 
         .manage-btn {
             background: rgba(56, 152, 255, 0.2);
@@ -472,6 +480,22 @@
         }
 
         .manage-btn:hover {
+            background: rgba(56, 152, 255, 0.3);
+        }
+
+        .btn-primary-outline {
+            background: rgba(56, 152, 255, 0.2);
+            border: 1px solid #3898FF;
+            color: #3898FF;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary-outline:hover {
             background: rgba(56, 152, 255, 0.3);
         }
 
@@ -534,18 +558,41 @@
             cursor: inherit;
         }
 
-        .ios13-segmented-control {
+        /* .ios13-segmented-control {
             --background: #13151A;
             background: var(--background);
             border-radius: 9px;
             margin: 0;
             padding: 2px;
             border: none;
-            /* outline: none; */
+           
             border: 1px solid #1a1e2708;
             display: grid;
             grid-auto-flow: column;
             grid-auto-columns: 1fr;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        } */
+
+        /* Replace the existing .ios13-segmented-control styles with these: */
+        .ios13-segmented-control {
+            --background: #13151A;
+            background: var(--background);
+            border-radius: 9px;
+            margin: 0 auto;
+            /* Center the control */
+            padding: 2px;
+            border: 1px solid #1a1e2708;
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(120px, 1fr);
+            /* Set min and max widths */
+            max-width: 325px;
+            /* Maximum width for the entire control */
+            width: 100%;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
@@ -562,7 +609,7 @@
             transform: scale(0.95);
         }
 
-        .ios13-segmented-control .option label {
+        /* .ios13-segmented-control .option label {
             position: relative;
             display: block;
             text-align: center;
@@ -571,6 +618,19 @@
             font-weight: 500;
             color: var(--white);
             font-size: 12px;
+        } */
+        /* Update the .option label styles */
+        .ios13-segmented-control .option label {
+            position: relative;
+            display: block;
+            text-align: center;
+            padding: 3px 12px;
+            /* Changed from 6vmin to fixed padding */
+            background: rgba(255, 255, 255, 0);
+            font-weight: 500;
+            color: var(--white);
+            font-size: 12px;
+            white-space: nowrap;
         }
 
         .ios13-segmented-control .option label::before,
@@ -695,6 +755,16 @@
 
             .content-section {
                 max-width: 100%;
+            }
+
+            .ios13-segmented-control {
+                grid-auto-columns: minmax(140px, 1fr);
+                /* Slightly wider on desktop */
+            }
+
+            .ios13-segmented-control .option label {
+                padding: 3px 16px;
+                /* Slightly more padding on desktop */
             }
         }
 
@@ -869,6 +939,19 @@
                 font-size: 10px;
             }
         }
+
+        /* For very small screens */
+        @media (max-width: 400px) {
+            .ios13-segmented-control {
+                grid-auto-columns: minmax(90px, 1fr);
+                /* More compact on mobile */
+            }
+
+            .ios13-segmented-control .option label {
+                padding: 3px 8px;
+                font-size: 11px;
+            }
+        }
     </style>
 </head>
 
@@ -888,26 +971,6 @@
 
                     <!-- Navigation tabs -->
                     <nav class="tabs">
-                        <!-- <div class="tab active" data-tab="general">
-                            <img src="assets/img/icon-2.svg" alt="General icon" />
-                            <span>General</span>
-                        </div>
-                        <div class="tab" data-tab="devices">
-                            <img src="assets/img/icon-3.svg" alt="Devices icon" />
-                            <span>Devices</span>
-                        </div>
-                        <div class="tab" data-tab="license-keys">
-                            <img src="assets/img/icon-4.svg" alt="License keys icon" />
-                            <span>License keys</span>
-                        </div>
-                        <div class="tab" data-tab="subscriptions">
-                            <img src="assets/img/icon-1.svg" alt="Subscriptions icon" />
-                            <span>Subscriptions</span>
-                        </div>
-                        <div class="tab" data-tab="shareable-links">
-                            <img src="assets/img/icon.svg" alt="Shareable links icon" />
-                            <span>Shareable links</span>
-                        </div> -->
                         <div class="tab active" data-tab="general">
                             <img src="assets/img/login-icon.svg" alt="General icon" />
                             <span>Login</span>
@@ -916,7 +979,7 @@
                             <img src="assets/img/status-icon.svg" alt="Devices icon" />
                             <span>Status</span>
                         </div>
-                        <div class="tab" data-tab="license-keys">
+                        <div class="tab" data-tab="product-values">
                             <img src="assets/img/voucher-icon.svg" alt="License keys icon" />
                             <span>Voucher</span>
                         </div>
@@ -1058,75 +1121,42 @@
                         </div>
 
                         <!-- License Keys Tab Content -->
-                        <div class="tab-content" id="license-keys">
+                        <div class="tab-content" id="product-values">
                             <div class="header">
                                 <div class="logo">
                                     <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
                                 </div>
                                 <div class="title">
-                                    <h1>License Keys</h1>
-                                    <p>Manage your Screen Studio license keys</p>
+                                    <h1>Voucher Package</h1>
+                                    <p>Select your favorite package</p>
                                 </div>
                             </div>
 
                             <div class="content-section">
-                                <h3>Active Licenses</h3>
-                                <div class="license-list">
-                                    <div class="license-item">
-                                        <div class="license-info">
-                                            <strong>Screen Studio Pro</strong>
-                                            <span class="license-status valid">Valid</span>
+                                <div class="product-list">
+                                    <div class="product-item">
+                                        <div class="product-info">
+                                            <strong>$1,00</strong>
+                                            <span class="product-status valid">Unlimited</span>
                                         </div>
-                                        <p>Expires: December 31, 2024</p>
-                                        <code class="license-key">SS-PRO-XXXX-XXXX-XXXX</code>
+                                        <p>1 Day</p>
+                                        <code class="product-value">Please go to the cashier to place your order</code>
                                     </div>
-                                    <div class="license-item">
-                                        <div class="license-info">
-                                            <strong>Screen Studio Pro</strong>
-                                            <span class="license-status valid">Valid</span>
+                                    <div class="product-item">
+                                        <div class="product-info">
+                                            <strong>$2,00</strong>
+                                            <span class="product-status valid">Unlimited</span>
                                         </div>
-                                        <p>Expires: December 31, 2024</p>
-                                        <code class="license-key">SS-PRO-XXXX-XXXX-XXXX</code>
+                                        <p>2 Day</p>
+                                        <code class="product-value">Please go to the cashier to place your order</code>
                                     </div>
-                                    <div class="license-item">
-                                        <div class="license-info">
-                                            <strong>Screen Studio Pro</strong>
-                                            <span class="license-status valid">Valid</span>
+                                    <div class="product-item">
+                                        <div class="product-info">
+                                            <strong>$3,00</strong>
+                                            <span class="product-status valid">Unlimited</span>
                                         </div>
-                                        <p>Expires: December 31, 2024</p>
-                                        <code class="license-key">SS-PRO-XXXX-XXXX-XXXX</code>
-                                    </div>
-                                    <div class="license-item">
-                                        <div class="license-info">
-                                            <strong>Screen Studio Pro</strong>
-                                            <span class="license-status valid">Valid</span>
-                                        </div>
-                                        <p>Expires: December 31, 2024</p>
-                                        <code class="license-key">SS-PRO-XXXX-XXXX-XXXX</code>
-                                    </div>
-                                    <div class="license-item">
-                                        <div class="license-info">
-                                            <strong>Screen Studio Pro</strong>
-                                            <span class="license-status valid">Valid</span>
-                                        </div>
-                                        <p>Expires: December 31, 2024</p>
-                                        <code class="license-key">SS-PRO-XXXX-XXXX-XXXX</code>
-                                    </div>
-                                    <div class="license-item">
-                                        <div class="license-info">
-                                            <strong>Screen Studio Pro</strong>
-                                            <span class="license-status valid">Valid</span>
-                                        </div>
-                                        <p>Expires: December 31, 2024</p>
-                                        <code class="license-key">SS-PRO-XXXX-XXXX-XXXX</code>
-                                    </div>
-                                    <div class="license-item">
-                                        <div class="license-info">
-                                            <strong>Screen Studio Pro</strong>
-                                            <span class="license-status valid">Valid</span>
-                                        </div>
-                                        <p>Expires: December 31, 2024</p>
-                                        <code class="license-key">SS-PRO-XXXX-XXXX-XXXX</code>
+                                        <p>3 Day</p>
+                                        <code class="product-value">Please go to the cashier to place your order</code>
                                     </div>
                                 </div>
                             </div>
@@ -1139,20 +1169,37 @@
                                     <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
                                 </div>
                                 <div class="title">
-                                    <h1>Subscriptions</h1>
-                                    <p>Manage your Screen Studio subscription</p>
+                                    <h1>Member Package</h1>
+                                    <p>Get longer internet access become a member</p>
                                 </div>
                             </div>
 
                             <div class="content-section">
-                                <h3>Current Plan</h3>
-                                <div class="subscription-card">
-                                    <div class="plan-info">
-                                        <strong>Screen Studio Pro</strong>
-                                        <span class="plan-price">$89/year</span>
+                                <div class="product-list">
+                                    <div class="product-item">
+                                        <div class="product-info">
+                                            <strong>$7,00</strong>
+                                            <span class="product-status valid">Unlimited</span>
+                                        </div>
+                                        <p>7 Day</p>
+                                        <code class="product-value">Please go to the cashier to place your order</code>
                                     </div>
-                                    <p>Next billing date: January 15, 2025</p>
-                                    <button class="manage-btn">Manage Subscription</button>
+                                    <div class="product-item">
+                                        <div class="product-info">
+                                            <strong>$15,00</strong>
+                                            <span class="product-status valid">Unlimited</span>
+                                        </div>
+                                        <p>15 Day</p>
+                                        <code class="product-value">Please go to the cashier to place your order</code>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="product-info">
+                                            <strong>$30,00</strong>
+                                            <span class="product-status valid">Unlimited</span>
+                                        </div>
+                                        <p>30 Day</p>
+                                        <code class="product-value">Please go to the cashier to place your order</code>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1164,22 +1211,54 @@
                                     <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
                                 </div>
                                 <div class="title">
-                                    <h1>Shareable Links</h1>
-                                    <p>Create and manage shareable links for your recordings</p>
+                                    <h1>Contact</h1>
+                                    <p>Need a help or want to get our services</p>
                                 </div>
                             </div>
 
                             <div class="content-section">
-                                <h3>Recent Links</h3>
+                                <h3>Follow Us</h3>
                                 <div class="links-list">
                                     <div class="link-item">
                                         <div class="link-info">
-                                            <strong>Product Demo Recording</strong>
-                                            <span class="link-status active">Active</span>
+                                            <strong>Instagram</strong>
                                         </div>
-                                        <p>Created: 2 hours ago</p>
+                                        <p>@pondenetofficial</p>
                                         <div class="link-url">
-                                            <input type="text" value="https://screen.studio/share/abc123" readonly />
+                                            <input type="text" value="https://www.instagram.com/pondenetofficial/"
+                                                readonly />
+                                            <button class="copy-btn">Copy</button>
+                                        </div>
+                                    </div>
+                                    <div class="link-item">
+                                        <div class="link-info">
+                                            <strong>YouTube</strong>
+                                        </div>
+                                        <p>@pondenetytb</p>
+                                        <div class="link-url">
+                                            <input type="text" value="https://www.youtube.com/@pondenetytb" readonly />
+                                            <button class="copy-btn">Copy</button>
+                                        </div>
+                                    </div>
+                                    <div class="link-item">
+                                        <div class="link-info">
+                                            <strong>WhatsApp</strong>
+                                        </div>
+                                        <p>Pondenet Customer Support</p>
+                                        <div class="link-url">
+                                            <input type="text"
+                                                value="https://wa.me/6282293449024?text=Hello%20can%20I%20asking,%20about%20product%20PondeNet?"
+                                                readonly />
+                                            <button class="copy-btn">Copy</button>
+                                        </div>
+                                    </div>
+                                    <div class="link-item">
+                                        <div class="link-info">
+                                            <strong>Email</strong>
+                                        </div>
+                                        <p>Pondenet Customer Care</p>
+                                        <div class="link-url">
+                                            <input type="text" value="customer.service@pondenet.com" readonly />
                                             <button class="copy-btn">Copy</button>
                                         </div>
                                     </div>
@@ -1228,6 +1307,7 @@
                 });
             });
         });
+
     </script>
 
     <script>
