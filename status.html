@@ -3,9 +3,16 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Screen Studio Dashboard</title>
+    <title>OctaLink - Status</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="application-name" content="OctaLink">
+    <meta name="application-name" content="OctaLink">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#08090a">
+    <meta property="og:title" content="OctaLink - Login">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="favicon/favicon-32x32.png" sizes="32x32">
     <link rel="manifest" href="favicon/site.webmanifest">
     <!-- General CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -15,7 +22,6 @@
     <main class="main">
         <section class="hero">
             <img class="background-image" alt="Background image" src="assets/img/background.jpg" />
-
             <div class="container">
                 <div class="card">
                     <!-- Window control buttons -->
@@ -27,11 +33,11 @@
 
                     <!-- Navigation tabs -->
                     <nav class="tabs">
-                        <div class="tab active" data-tab="general">
-                            <img src="assets/img/login-icon.svg" alt="General icon" />
-                            <span data-en="Login" data-ar="تسجيل الدخول">Login</span>
+                        <div class="tab" data-tab="general" onclick="location.href='logout.html?erase-cookie=true';">
+                            <img src="assets/img/logout-icon.svg" alt="General icon" />
+                            <span data-en="Logout" data-ar="تسجيل الخروج">Logout</span>
                         </div>
-                        <div class="tab" data-tab="devices">
+                        <div class="tab active" data-tab="devices">
                             <img src="assets/img/status-icon.svg" alt="Devices icon" />
                             <span data-en="Status" data-ar="الحالة">Status</span>
                         </div>
@@ -50,76 +56,87 @@
                     </nav>
 
                     <div class="card-content">
-                        <!-- General Tab Content -->
-                        <div class="tab-content active" id="general">
+                        <!-- Status Tab Content -->
+                        <div class="tab-content active" id="devices">
                             <div class="header">
                                 <div class="logo">
                                     <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
                                 </div>
                                 <div class="title">
-                                    <h1 data-en="Welcome to OctaLink" data-ar="مرحباً بك في أوكتا لينك">Welcome to
-                                        OctaLink</h1>
-                                    <p data-en="Enter your username & password to continue"
-                                        data-ar="أدخل اسم المستخدم وكلمة المرور للمتابعة">Enter your username & password
-                                        to continue</p>
-                                </div>
-                            </div>
-                            <div class="ios13-segmented-control">
-                                <span class="selection"></span>
-
-                                <div class="option">
-                                    <input type="radio" id="metro" name="sample" value="metro" checked>
-                                    <label for="metro"><span data-en="Voucher" data-ar="قسيمة">Voucher</span></label>
-                                </div>
-
-                                <div class="option">
-                                    <input type="radio" id="bus" name="sample" value="bus">
-                                    <label for="bus"><span data-en="Member" data-ar="عضو">Member</span></label>
+                                    <h1 data-en="Information Connection" data-ar="معلومات الاتصال">Information
+                                        Connection</h1>
+                                    <p data-en="Overview your network information"
+                                        data-ar="نظرة عامة على معلومات الشبكة">Overview your network information</p>
                                 </div>
                             </div>
 
-                            <div class="alert alert--error" role="alert">
-                                <div class="alert__icon">
-                                    <svg width="16" height="18" viewBox="0 0 16 18" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M7.99998 15.9418C11.6819 15.9418 14.6666 12.957 14.6666 9.27513C14.6666 5.59323 11.6819 2.60846 7.99998 2.60846C4.31808 2.60846 1.33331 5.59323 1.33331 9.27513C1.33331 12.957 4.31808 15.9418 7.99998 15.9418Z"
-                                            stroke="#E0687D" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M10 7.27509L6 11.2751" stroke="#E0687D" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M6 7.27509L10 11.2751" stroke="#E0687D" stroke-width="1.5"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-
+                            <div class="content-section">
+                                <div class="device-list">
+                                    <div class="product-item">
+                                        <div class="device-info">
+                                            <span data-en="Status Internet" data-ar="حالة الإنترنت">Status
+                                                Internet</span>
+                                            <span class="device-status active" data-en="Connected"
+                                                data-ar="متصل">Connected</span>
+                                        </div>
+                                        <p>$(uptime)</p>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="device-info">
+                                            <span data-en="Username" data-ar="اسم المستخدم">Username</span>
+                                        </div>
+                                        <p>$(username)</p>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="device-info">
+                                            <span data-en="IP Address" data-ar="عنوان IP">IP Address</span>
+                                        </div>
+                                        <p>$(ip)</p>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="device-info">
+                                            <span data-en="MAC Address" data-ar="عنوان MAC">MAC Address</span>
+                                        </div>
+                                        <p>$(mac)</p>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="device-info">
+                                            <span data-en="Upload" data-ar="الرفع">Upload</span>
+                                        </div>
+                                        <p>$(bytes-out-nice)</p>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="device-info">
+                                            <span data-en="Download" data-ar="التحميل">Download</span>
+                                        </div>
+                                        <p>$(bytes-in-nice)</p>
+                                    </div>
+                                    $(if remain-bytes-total)
+                                    <div class="product-item">
+                                        <div class="device-info">
+                                            <span data-en="Remaining quota" data-ar="الحصة المتبقية">Remaining
+                                                quota</span>
+                                            <span class="device-status inactive">$(remain-bytes-total-nice)</span>
+                                        </div>
+                                        <p data-en="Your quota is running low" data-ar="حصتك منخفضة">Your quota is
+                                            running low</p>
+                                    </div>
+                                    $(endif)
+                                    <div class="product-item">
+                                        <div class="device-info">
+                                            <span data-en="Status refresh" data-ar="تحديث الحالة">Status
+                                                refresh</span>
+                                        </div>
+                                        <p>$(refresh-timeout)</p>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="device-info">
+                                            <span data-en="Hotsname" data-ar="اسم المضيف">Hotsname</span>
+                                        </div>
+                                        <p>$(hostname)</p>
+                                    </div>
                                 </div>
-                                <p class="alert__message">Username or password incorrect</p>
                             </div>
-
-                            <form class="form">
-                                <input type="text" data-placeholder-en="Username" data-placeholder-ar="اسم المستخدم"
-                                    placeholder="Username">
-                                <input type="password" data-placeholder-en="Password" data-placeholder-ar="كلمة المرور"
-                                    placeholder="Password">
-                                <button type="submit" class="btn-primary">
-                                    <span class="btn-text" data-en="Continue" data-ar="متابعة">Continue</span>
-                                    <span class="shortcut">⏎</span>
-                                </button>
-                                <p class="terms">
-                                    <span data-en="By continuing, you agree to the"
-                                        data-ar="بالمتابعة، فإنك توافق على">By continuing, you agree to the</span> <a
-                                        href="#" data-en="Terms of Service" data-ar="شروط الخدمة">Terms of Service</a>
-                                    <span data-en="and" data-ar="و">and</span><br />
-                                    <a href="#" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a>.
-                                </p>
-                            </form>
-
-                            <!-- <p class="contact-info">
-                                <span data-en="In case of any issues, please contact us at"
-                                    data-ar="في حالة وجود أي مشاكل، يرجى التواصل معنا على">In case of any issues, please
-                                    contact us at</span> <a href="mailto:team@octalink.com">team@octalink.com</a>
-                            </p> -->
-
                             <!-- Language Selector -->
                             <div class="language-selector">
                                 <div class="language-dropdown">
@@ -144,95 +161,7 @@
                             </div>
                         </div>
 
-                        <!-- Devices Tab Content -->
-                        <div class="tab-content" id="devices">
-                            <div class="header">
-                                <div class="logo">
-                                    <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
-                                </div>
-                                <div class="title">
-                                    <h1 data-en="Information Connection" data-ar="معلومات الاتصال">Information
-                                        Connection</h1>
-                                    <p data-en="Overview your network information"
-                                        data-ar="نظرة عامة على معلومات الشبكة">Overview your network information</p>
-                                </div>
-                            </div>
-
-                            <div class="content-section">
-                                <!-- <h3 style="text-align: center;">Connected Devices</h3> -->
-                                <div class="device-list">
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="Status Internet" data-ar="حالة الإنترنت">Status
-                                                Internet</span>
-                                            <span class="device-status active" data-en="Connected"
-                                                data-ar="متصل">Connected</span>
-                                        </div>
-                                        <p>180s</p>
-                                    </div>
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="Username" data-ar="اسم المستخدم">Username</span>
-                                            <!-- <span class="device-status inactive">Inactive</span> -->
-                                        </div>
-                                        <p>Alif</p>
-                                    </div>
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="IP Address" data-ar="عنوان IP">IP Address</span>
-                                            <!-- <span class="device-status inactive">Inactive</span> -->
-                                        </div>
-                                        <p>192.178.99.100.61</p>
-                                    </div>
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="MAC Address" data-ar="عنوان MAC">MAC Address</span>
-                                            <!-- <span class="device-status inactive">Inactive</span> -->
-                                        </div>
-                                        <p>AC:00CBSS:012XC:0092</p>
-                                    </div>
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="Upload" data-ar="الرفع">Upload</span>
-                                            <!-- <span class="device-status inactive">Inactive</span> -->
-                                        </div>
-                                        <p>1980Mbps</p>
-                                    </div>
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="Download" data-ar="التحميل">Download</span>
-                                            <!-- <span class="device-status inactive">Inactive</span> -->
-                                        </div>
-                                        <p>5980Mbps</p>
-                                    </div>
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="Sisa Kuota" data-ar="الحصة المتبقية">Sisa Kuota</span>
-                                            <span class="device-status inactive">15GB</span>
-                                        </div>
-                                        <p data-en="Kuota anda hampir habis" data-ar="حصتك على وشك النفاد">Kuota anda
-                                            hampir habis</p>
-                                    </div>
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="Status refresh" data-ar="تحديث الحالة">Status
-                                                refresh</span>
-                                            <!-- <span class="device-status inactive">Inactive</span> -->
-                                        </div>
-                                        <p>1s</p>
-                                    </div>
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="Hotsname" data-ar="اسم المضيف">Hotsname</span>
-                                            <!-- <span class="device-status inactive">Inactive</span> -->
-                                        </div>
-                                        <p>pondenet.com</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- License Keys Tab Content -->
+                        <!-- Voucher Tab Content -->
                         <div class="tab-content" id="product-values">
                             <div class="header">
                                 <div class="logo">
@@ -284,7 +213,7 @@
                             </div>
                         </div>
 
-                        <!-- Subscriptions Tab Content -->
+                        <!-- Member Tab Content -->
                         <div class="tab-content" id="subscriptions">
                             <div class="header">
                                 <div class="logo">
@@ -337,7 +266,7 @@
                             </div>
                         </div>
 
-                        <!-- Shareable Links Tab Content -->
+                        <!-- Contact Links Tab Content -->
                         <div class="tab-content" id="shareable-links">
                             <div class="header">
                                 <div class="logo">
@@ -360,8 +289,8 @@
                                         </div>
                                         <p>pondenetofficial</p>
                                         <div class="link-url">
-                                            <input type="text" value="https://www.instagram.com/@pondenetofficial/"
-                                                readonly />
+                                            <input class="form-control-sm" type="text"
+                                                value="https://www.instagram.com/@pondenetofficial/" readonly />
                                             <button class="copy-btn" data-en="Copy" data-ar="نسخ">Copy</button>
                                         </div>
                                     </div>
@@ -371,7 +300,8 @@
                                         </div>
                                         <p>pondenetytb</p>
                                         <div class="link-url">
-                                            <input type="text" value="https://www.youtube.com/@pondenetytb" readonly />
+                                            <input class="form-control-sm" type="text"
+                                                value="https://www.youtube.com/@pondenetytb" readonly />
                                             <button class="copy-btn" data-en="Copy" data-ar="نسخ">Copy</button>
                                         </div>
                                     </div>
@@ -383,7 +313,7 @@
                                             Pondenet
                                             Customer Support</p>
                                         <div class="link-url">
-                                            <input type="text"
+                                            <input class="form-control-sm" type="text"
                                                 value="https://wa.me/6282293449024?text=Hello%20can%20I%20asking,%20about%20product%20PondeNet?"
                                                 readonly />
                                             <button class="copy-btn" data-en="Copy" data-ar="نسخ">Copy</button>
@@ -397,7 +327,8 @@
                                             Pondenet
                                             Customer Care</p>
                                         <div class="link-url">
-                                            <input type="text" value="customer.service@pondenet.com" readonly />
+                                            <input class="form-control-sm" type="text"
+                                                value="customer.service@pondenet.com" readonly />
                                             <button class="copy-btn" data-en="Copy" data-ar="نسخ">Copy</button>
                                         </div>
                                     </div>
@@ -409,217 +340,8 @@
             </div>
         </section>
     </main>
-
-    <script>
-        // Language functionality
-        let currentLanguage = 'en';
-
-        // Load saved language from localStorage
-        function loadSavedLanguage() {
-            const savedLanguage = localStorage.getItem('selectedLanguage');
-            if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ar')) {
-                currentLanguage = savedLanguage;
-                switchLanguage(currentLanguage);
-            }
-        }
-
-        // Save language to localStorage
-        function saveLanguage(language) {
-            localStorage.setItem('selectedLanguage', language);
-        }
-
-        function switchLanguage(language) {
-            currentLanguage = language;
-            saveLanguage(language);
-
-            // Update HTML direction
-            document.documentElement.setAttribute('dir', language === 'ar' ? 'rtl' : 'ltr');
-            document.documentElement.setAttribute('lang', language);
-
-            // Update all text content
-            const elements = document.querySelectorAll('[data-en][data-ar]');
-            elements.forEach(element => {
-                const text = element.getAttribute(`data-${language}`);
-                if (text) {
-                    element.textContent = text;
-                }
-            });
-
-            // Update placeholders
-            const inputs = document.querySelectorAll('input[data-placeholder-en][data-placeholder-ar]');
-            inputs.forEach(input => {
-                const placeholder = input.getAttribute(`data-placeholder-${language}`);
-                if (placeholder) {
-                    input.placeholder = placeholder;
-                }
-            });
-
-            // Update language selector
-            const currentFlag = document.getElementById('currentFlag');
-            const currentLanguageText = document.getElementById('currentLanguage');
-
-            if (language === 'ar') {
-                currentFlag.className = 'flag-icon flag-sa';
-                currentLanguageText.textContent = 'العربية';
-            } else {
-                currentFlag.className = 'flag-icon flag-uk';
-                currentLanguageText.textContent = 'English';
-            }
-
-            // Update selected option
-            document.querySelectorAll('.language-option').forEach(option => {
-                option.classList.remove('selected');
-                if (option.getAttribute('data-lang') === language) {
-                    option.classList.add('selected');
-                }
-            });
-
-            // Update segmented control position for RTL
-            updatePillPosition();
-        }
-
-        // Tab functionality
-        document.addEventListener('DOMContentLoaded', function () {
-            // Load saved language first
-            loadSavedLanguage();
-
-            const tabs = document.querySelectorAll('.tab');
-            const tabContents = document.querySelectorAll('.tab-content');
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function () {
-                    const targetTab = this.getAttribute('data-tab');
-
-                    // Remove active class from all tabs and content
-                    tabs.forEach(t => t.classList.remove('active'));
-                    tabContents.forEach(content => content.classList.remove('active'));
-
-                    // Add active class to clicked tab and corresponding content
-                    this.classList.add('active');
-                    document.getElementById(targetTab).classList.add('active');
-                });
-            });
-
-            // Copy functionality for shareable links
-            const copyBtns = document.querySelectorAll('.copy-btn');
-            copyBtns.forEach(btn => {
-                btn.addEventListener('click', function () {
-                    const input = this.previousElementSibling;
-                    input.select();
-                    document.execCommand('copy');
-
-                    const originalText = this.textContent;
-                    const copiedText = currentLanguage === 'ar' ? 'تم النسخ!' : 'Copied!';
-                    this.textContent = copiedText;
-                    setTimeout(() => {
-                        this.textContent = originalText;
-                    }, 2000);
-                });
-            });
-
-            // Language selector functionality
-            const languageTrigger = document.getElementById('languageTrigger');
-            const languageOptions = document.getElementById('languageOptions');
-
-            languageTrigger.addEventListener('click', function (e) {
-                e.stopPropagation();
-                this.classList.toggle('active');
-                languageOptions.classList.toggle('show');
-            });
-
-            // Close dropdown when clicking outside
-            document.addEventListener('click', function () {
-                languageTrigger.classList.remove('active');
-                languageOptions.classList.remove('show');
-            });
-
-            // Language option selection
-            document.querySelectorAll('.language-option').forEach(option => {
-                option.addEventListener('click', function () {
-                    const selectedLang = this.getAttribute('data-lang');
-                    switchLanguage(selectedLang);
-                    languageTrigger.classList.remove('active');
-                    languageOptions.classList.remove('show');
-                });
-            });
-        });
-
-    </script>
-
-    <script>
-        // inspired by
-        // https://www.cssscript.com/demo/ios-segmented-controls/
-
-        // Constants
-        const SEGMENTED_CONTROL_BASE_SELECTOR = ".ios13-segmented-control";
-        const SEGMENTED_CONTROL_INDIVIDUAL_SEGMENT_SELECTOR =
-            ".ios13-segmented-control .option input";
-        const SEGMENTED_CONTROL_BACKGROUND_PILL_SELECTOR =
-            ".ios13-segmented-control .selection";
-        // Main
-        document.addEventListener("DOMContentLoaded", setup);
-        // Body functions
-        function setup() {
-            forEachElement(SEGMENTED_CONTROL_BASE_SELECTOR, (elem) => {
-                elem.addEventListener("change", updatePillPosition);
-            });
-            window.addEventListener("resize", updatePillPosition); // Prevent pill from detaching from element when window resized. Becuase this is rare I haven't bothered with throttling the event
-        }
-
-        function updatePillPosition() {
-            forEachElement(
-                SEGMENTED_CONTROL_INDIVIDUAL_SEGMENT_SELECTOR,
-                (elem, index) => {
-                    if (elem.checked) {
-                        moveBackgroundPillToElement(elem, index);
-                    }
-                }
-            );
-        }
-
-        // function moveBackgroundPillToElement(elem, index) {
-        //     const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
-        //     const segmentedControl = elem.closest('.ios13-segmented-control');
-        //     const totalOptions = segmentedControl.querySelectorAll('.option').length;
-
-        //     let translateX;
-        //     if (isRTL) {
-        //         // In RTL, reverse the index calculation
-        //         translateX = elem.offsetWidth * (totalOptions - 1 - index);
-
-        //     } else {
-        //         translateX = elem.offsetWidth * index;
-        //     }
-
-        //     document.querySelector(
-        //         SEGMENTED_CONTROL_BACKGROUND_PILL_SELECTOR
-        //     ).style.transform = "translateX(" + translateX + "px)";
-        // }
-
-        function moveBackgroundPillToElement(elem, index) {
-            const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
-            const segmentedControl = elem.closest('.ios13-segmented-control');
-            const totalOptions = segmentedControl.querySelectorAll('.option').length;
-
-            let translateX;
-            if (isRTL) {
-                // In RTL, use negative translation
-                translateX = -elem.offsetWidth * index;
-            } else {
-                translateX = elem.offsetWidth * index;
-            }
-
-            document.querySelector(
-                SEGMENTED_CONTROL_BACKGROUND_PILL_SELECTOR
-            ).style.transform = "translateX(" + translateX + "px)";
-        }
-
-        // Helper functions
-        function forEachElement(className, fn) {
-            Array.from(document.querySelectorAll(className)).forEach(fn);
-        }
-
-    </script>
+    <!-- General JS -->
+    <script src="assets/js/app.js"></script>
 </body>
 
 </html>

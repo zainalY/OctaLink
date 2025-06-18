@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>OctaLink - Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="application-name" content="OctaLink">
+    <meta name="application-name" content="OctaLink">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#08090a">
+    <meta property="og:title" content="OctaLink - Login">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <!-- General CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body onload="voucher()">
+
+    $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post" style="display:none">
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+    </form>
+
+    <script src="/md5.js"></script>
+    <script>
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+
+    </script>
+    $(endif)
+
+    <main class="main">
+        <section class="hero">
+            <img class="background-image" alt="Background image" src="assets/img/background.jpg" />
+            <div class="container">
+                <div class="card">
+                    <!-- Window control buttons -->
+                    <div class="window-controls">
+                        <div class="control-btn red"></div>
+                        <div class="control-btn gray"></div>
+                        <div class="control-btn gray"></div>
+                    </div>
+
+                    <!-- Navigation tabs -->
+                    <nav class="tabs">
+                        <div class="tab active" data-tab="general">
+                            <img src="assets/img/login-icon.svg" alt="General icon" />
+                            <span data-en="Login" data-ar="تسجيل الدخول">Login</span>
+                        </div>
+                        <div class="tab" data-tab="devices" onclick="location.href='status.html';">
+                            <img src="assets/img/status-icon.svg" alt="Devices icon" />
+                            <span data-en="Status" data-ar="الحالة">Status</span>
+                        </div>
+                        <div class="tab" data-tab="product-values">
+                            <img src="assets/img/voucher-icon.svg" alt="License keys icon" />
+                            <span data-en="Voucher" data-ar="قسيمة">Voucher</span>
+                        </div>
+                        <div class="tab" data-tab="subscriptions">
+                            <img src="assets/img/member-icon.svg" alt="Subscriptions icon" />
+                            <span data-en="Member" data-ar="عضو">Member</span>
+                        </div>
+                        <div class="tab" data-tab="shareable-links">
+                            <img src="assets/img/contact-icon.svg" alt="Shareable links icon" />
+                            <span data-en="Contact" data-ar="اتصال">Contact</span>
+                        </div>
+                    </nav>
+
+                    <div class="card-content">
+                        <!-- Login Tab Content -->
+                        <div class="tab-content active" id="general">
+                            <div class="header">
+                                <div class="logo">
+                                    <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
+                                </div>
+                                <div class="title">
+                                    <h1 data-en="Welcome to OctaLink" data-ar="مرحباً بك في أوكتا لينك">Welcome to
+                                        OctaLink</h1>
+                                    <p data-en="Enter your username & password to continue"
+                                        data-ar="أدخل اسم المستخدم وكلمة المرور للمتابعة">Enter your username & password
+                                        to continue</p>
+                                </div>
+                            </div>
+                            <div class="ios13-segmented-control">
+                                <span class="selection"></span>
+
+                                <div class="option">
+                                    <input type="radio" id="target1" name="tab-control" value="voucher" checked>
+                                    <label for="target1" onclick="voucher();">
+                                        <span data-en="Voucher" data-ar="قسيمة">Voucher</span>
+                                    </label>
+                                </div>
+
+                                <div class="option">
+                                    <input type="radio" id="target2" name="tab-control" value="member">
+                                    <label for="target2" onclick="member();">
+                                        <span data-en="Member" data-ar="عضو">Member</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            $(if error)
+                            <div class="alert alert--error" role="alert">
+                                <div class="alert__icon">
+                                    <svg width="16" height="18" viewBox="0 0 16 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M7.99998 15.9418C11.6819 15.9418 14.6666 12.957 14.6666 9.27513C14.6666 5.59323 11.6819 2.60846 7.99998 2.60846C4.31808 2.60846 1.33331 5.59323 1.33331 9.27513C1.33331 12.957 4.31808 15.9418 7.99998 15.9418Z"
+                                            stroke="#E0687D" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M10 7.27509L6 11.2751" stroke="#E0687D" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M6 7.27509L10 11.2751" stroke="#E0687D" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+
+                                </div>
+                                <p class="alert__message">$(error)</p>
+                            </div>
+                            $(endif)
+
+                            <form name="login" class="form" action="$(link-login-only)" method="post" $(if chap-id)
+                                onSubmit="return doLogin()" $(endif)>
+                                <input type="hidden" name="dst" value="$(link-orig)" />
+                                <input type="hidden" name="popup" value="true" />
+                                <span>
+                                    <input name="username" type="text" value="$(username)" class="form-control" required
+                                        autocomplete="off" id="usernameInput" data-placeholder-en="Username"
+                                        data-placeholder-ar="اسم المستخدم" placeholder="Username" />
+                                </span>
+                                <span>
+                                    <input name="password" class="form-control" type="password"
+                                        data-placeholder-en="Password" data-placeholder-ar="كلمة المرور"
+                                        placeholder="Password" required />
+                                </span>
+                                <button type="submit" class="btn btn-primary w-100 ripple">Login</button>
+                                <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)"
+                                    class="btn-primary">
+                                    <span class="btn-text" data-en="Continue" data-ar="متابعة">Login Trial</span>
+                                </a>
+                                <p class="terms">
+                                    <span data-en="By continuing, you agree to the"
+                                        data-ar="بالمتابعة، فإنك توافق على">By continuing, you agree to the</span> <a
+                                        href="#" data-en="Terms of Service" data-ar="شروط الخدمة">Terms of Service</a>
+                                    <span data-en="and" data-ar="و">and</span><br />
+                                    <a href="#" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a>.
+                                </p>
+                            </form>
+
+                            <!-- Language Selector -->
+                            <div class="language-selector">
+                                <div class="language-dropdown">
+                                    <div class="language-trigger" id="languageTrigger">
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <span class="flag-icon flag-uk" id="currentFlag"></span>
+                                            <span id="currentLanguage">English</span>
+                                        </div>
+                                        <div class="dropdown-arrow"></div>
+                                    </div>
+                                    <div class="language-options" id="languageOptions">
+                                        <div class="language-option selected" data-lang="en">
+                                            <span class="flag-icon flag-uk"></span>
+                                            <span>English</span>
+                                        </div>
+                                        <div class="language-option" data-lang="ar">
+                                            <span class="flag-icon flag-sa"></span>
+                                            <span>العربية</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Voucher Tab Content -->
+                        <div class="tab-content" id="product-values">
+                            <div class="header">
+                                <div class="logo">
+                                    <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
+                                </div>
+                                <div class="title">
+                                    <h1 data-en="Voucher Package" data-ar="حزمة القسائم">Voucher Package</h1>
+                                    <p data-en="Select your favorite package" data-ar="اختر الحزمة المفضلة لديك">Select
+                                        your favorite package</p>
+                                </div>
+                            </div>
+
+                            <div class="content-section">
+                                <div class="product-list">
+                                    <div class="product-item">
+                                        <div class="product-info">
+                                            <span>$1,00</span>
+                                            <span class="product-status valid" data-en="Unlimited"
+                                                data-ar="غير محدود">Unlimited</span>
+                                        </div>
+                                        <p data-en="1 Day" data-ar="يوم واحد">1 Day</p>
+                                        <code class="product-value"
+                                            data-en="Please go to the cashier to place your order"
+                                            data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="product-info">
+                                            <span>$2,00</span>
+                                            <span class="product-status valid" data-en="Unlimited"
+                                                data-ar="غير محدود">Unlimited</span>
+                                        </div>
+                                        <p data-en="2 Day" data-ar="يومان">2 Day</p>
+                                        <code class="product-value"
+                                            data-en="Please go to the cashier to place your order"
+                                            data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="product-info">
+                                            <span>$3,00</span>
+                                            <span class="product-status valid" data-en="Unlimited"
+                                                data-ar="غير محدود">Unlimited</span>
+                                        </div>
+                                        <p data-en="3 Day" data-ar="ثلاثة أيام">3 Day</p>
+                                        <code class="product-value"
+                                            data-en="Please go to the cashier to place your order"
+                                            data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Member Tab Content -->
+                        <div class="tab-content" id="subscriptions">
+                            <div class="header">
+                                <div class="logo">
+                                    <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
+                                </div>
+                                <div class="title">
+                                    <h1 data-en="Member Package" data-ar="حزمة العضوية">Member Package</h1>
+                                    <p data-en="Get longer internet access become a member"
+                                        data-ar="احصل على وصول أطول للإنترنت كعضو">Get longer internet access become a
+                                        member</p>
+                                </div>
+                            </div>
+
+                            <div class="content-section">
+                                <div class="product-list">
+                                    <div class="product-item">
+                                        <div class="product-info">
+                                            <span>$7,00</span>
+                                            <span class="product-status valid" data-en="Unlimited"
+                                                data-ar="غير محدود">Unlimited</span>
+                                        </div>
+                                        <p data-en="7 Day" data-ar="7 أيام">7 Day</p>
+                                        <code class="product-value"
+                                            data-en="Please go to the cashier to place your order"
+                                            data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="product-info">
+                                            <span>$15,00</span>
+                                            <span class="product-status valid" data-en="Unlimited"
+                                                data-ar="غير محدود">Unlimited</span>
+                                        </div>
+                                        <p data-en="15 Day" data-ar="15 يوم">15 Day</p>
+                                        <code class="product-value"
+                                            data-en="Please go to the cashier to place your order"
+                                            data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="product-info">
+                                            <span>$30,00</span>
+                                            <span class="product-status valid" data-en="Unlimited"
+                                                data-ar="غير محدود">Unlimited</span>
+                                        </div>
+                                        <p data-en="30 Day" data-ar="30 يوم">30 Day</p>
+                                        <code class="product-value"
+                                            data-en="Please go to the cashier to place your order"
+                                            data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Links Tab Content -->
+                        <div class="tab-content" id="shareable-links">
+                            <div class="header">
+                                <div class="logo">
+                                    <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
+                                </div>
+                                <div class="title">
+                                    <h1 data-en="Contact" data-ar="اتصال">Contact</h1>
+                                    <p data-en="Need a help or want to get our services"
+                                        data-ar="تحتاج مساعدة أو تريد الحصول على خدماتنا">Need a help or want to get our
+                                        services</p>
+                                </div>
+                            </div>
+
+                            <div class="content-section">
+                                <h3 data-en="Follow Us" data-ar="تابعنا">Follow Us</h3>
+                                <div class="links-list">
+                                    <div class="link-item">
+                                        <div class="link-info">
+                                            <span>Instagram</span>
+                                        </div>
+                                        <p>pondenetofficial</p>
+                                        <div class="link-url">
+                                            <input class="form-control-sm" type="text"
+                                                value="https://www.instagram.com/@pondenetofficial/" readonly />
+                                            <button class="copy-btn" data-en="Copy" data-ar="نسخ">Copy</button>
+                                        </div>
+                                    </div>
+                                    <div class="link-item">
+                                        <div class="link-info">
+                                            <span>YouTube</span>
+                                        </div>
+                                        <p>pondenetytb</p>
+                                        <div class="link-url">
+                                            <input class="form-control-sm" type="text"
+                                                value="https://www.youtube.com/@pondenetytb" readonly />
+                                            <button class="copy-btn" data-en="Copy" data-ar="نسخ">Copy</button>
+                                        </div>
+                                    </div>
+                                    <div class="link-item">
+                                        <div class="link-info">
+                                            <span>WhatsApp</span>
+                                        </div>
+                                        <p data-en="Pondenet Customer Support" data-ar="Pondenet Customer Support">
+                                            Pondenet
+                                            Customer Support</p>
+                                        <div class="link-url">
+                                            <input class="form-control-sm" type="text"
+                                                value="https://wa.me/6282293449024?text=Hello%20can%20I%20asking,%20about%20product%20PondeNet?"
+                                                readonly />
+                                            <button class="copy-btn" data-en="Copy" data-ar="نسخ">Copy</button>
+                                        </div>
+                                    </div>
+                                    <div class="link-item">
+                                        <div class="link-info">
+                                            <span data-en="Email" data-ar="Email">Email</span>
+                                        </div>
+                                        <p data-en="Pondenet Customer Care" data-ar="customer.service@pondenet.com">
+                                            Pondenet
+                                            Customer Care</p>
+                                        <div class="link-url">
+                                            <input class="form-control-sm" type="text"
+                                                value="customer.service@pondenet.com" readonly />
+                                            <button class="copy-btn" data-en="Copy" data-ar="نسخ">Copy</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- General JS -->
+    <script src="assets/js/app.js"></script>
+    <script type="text/javascript">
+        var hostname = window.location.hostname;
+        document.login.username.focus();
+
+        // login page 2 
+        var username = document.login.username;
+        var password = document.login.password;
+
+        // set password = username
+        function setpass() {
+            var user = username.value
+            username.value = user;
+            password.value = user;
+        }
+
+        username.onkeyup = setpass;
+
+        // change to voucher mode
+        function voucher() {
+            const usernameInput = document.getElementById('usernameInput');
+            const lang = localStorage.getItem('selectedLanguage') || 'en';
+
+            usernameInput.setAttribute('data-placeholder-en', 'Voucher Code');
+            usernameInput.setAttribute('data-placeholder-ar', 'رمز القسيمة');
+            usernameInput.placeholder = lang === 'ar'
+                ? usernameInput.dataset.placeholderAr
+                : usernameInput.dataset.placeholderEn;
+
+            username.focus();
+            username.onkeyup = setpass;
+            password.type = "hidden";
+        }
+
+        // change to member mode
+        function member() {
+            const usernameInput = document.getElementById('usernameInput');
+            const lang = localStorage.getItem('selectedLanguage') || 'en';
+
+            usernameInput.setAttribute('data-placeholder-en', 'Username');
+            usernameInput.setAttribute('data-placeholder-ar', 'اسم المستخدم');
+            usernameInput.placeholder = lang === 'ar'
+                ? usernameInput.dataset.placeholderAr
+                : usernameInput.dataset.placeholderEn;
+
+            username.focus();
+            username.onkeyup = "";
+            password.type = "password";
+        }
+
+    </script>
+</body>
+
+</html>

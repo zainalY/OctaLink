@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>OctaLink - Logout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="application-name" content="OctaLink">
+    <meta name="application-name" content="OctaLink">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#08090a">
+    <meta property="og:title" content="OctaLink - Login">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <!-- General CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <main class="main">
+        <section class="hero">
+            <img class="background-image" alt="Background image" src="assets/img/background.jpg" />
+            <div class="container">
+                <div class="card">
+                    <!-- Window control buttons -->
+                    <div class="window-controls">
+                        <div class="control-btn red"></div>
+                        <div class="control-btn gray"></div>
+                        <div class="control-btn gray"></div>
+                    </div>
+
+                    <!-- Navigation tabs -->
+                    <nav class="tabs">
+                        <div class="tab" data-tab="general" onclick="location.href='login.html';">
+                            <img src="assets/img/login-icon.svg" alt="General icon" />
+                            <span data-en="Login" data-ar="تسجيل الدخول">Login</span>
+                        </div>
+                        <div class="tab" data-tab="devices" onclick="location.href='status.html';">
+                            <img src="assets/img/status-icon.svg" alt="Devices icon" />
+                            <span data-en="Status" data-ar="الحالة">Status</span>
+                        </div>
+                        <div class="tab" data-tab="product-values">
+                            <img src="assets/img/voucher-icon.svg" alt="License keys icon" />
+                            <span data-en="Voucher" data-ar="قسيمة">Voucher</span>
+                        </div>
+                        <div class="tab" data-tab="subscriptions">
+                            <img src="assets/img/member-icon.svg" alt="Subscriptions icon" />
+                            <span data-en="Member" data-ar="عضو">Member</span>
+                        </div>
+                        <div class="tab" data-tab="shareable-links">
+                            <img src="assets/img/contact-icon.svg" alt="Shareable links icon" />
+                            <span data-en="Contact" data-ar="اتصال">Contact</span>
+                        </div>
+                    </nav>
+
+                    <div class="card-content">
+                        <!-- Login Tab Content -->
+                        <div class="tab-content active" id="general">
+                            <div class="header">
+                                <div class="logo">
+                                    <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
+                                </div>
+                                <div class="title">
+                                    <h1 data-en="Good bye👋" data-ar="مرحباً بك في أوكتا لينك">Good bye👋</h1>
+                                    <p data-en="Record your last connection
+                                        information" data-ar="تسجيل معلومات الاتصال الأخير">Record your last connection
+                                        information</p>
+                                </div>
+                            </div>
+
+                            <div class="content-section">
+                                <div class="device-list">
+                                    <div class="product-item">
+                                        <div class="device-info">
+                                            <span data-en="Status Internet" data-ar="حالة الإنترنت">Status
+                                                Internet</span>
+                                            <span class="device-status disconnected" data-en="Disconnected"
+                                                data-ar="غير متصل">Disconnected</span>
+                                        </div>
+                                        <p>$(uptime)</p>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="device-info">
+                                            <span data-en="Username" data-ar="اسم المستخدم">Username</span>
+                                        </div>
+                                        <p>$(username)</p>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="device-info">
+                                            <span data-en="IP Address" data-ar="عنوان IP">IP Address</span>
+                                        </div>
+                                        <p>$(ip)</p>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="device-info">
+                                            <span data-en="MAC Address" data-ar="عنوان MAC">MAC Address</span>
+                                        </div>
+                                        <p>$(mac)</p>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="device-info">
+                                            <span data-en="Upload" data-ar="الرفع">Upload</span>
+                                        </div>
+                                        <p>$(bytes-out-nice)</p>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="device-info">
+                                            <span data-en="Download" data-ar="التحميل">Download</span>
+                                        </div>
+                                        <p>$(bytes-in-nice)</p>
+                                    </div>
+                                    $(if remain-bytes-total)
+                                    <div class="product-item">
+                                        <div class="device-info">
+                                            <span data-en="Remaining quota" data-ar="الحصة المتبقية">Remaining
+                                                quota</span>
+                                            <span class="device-status inactive">$(remain-bytes-total-nice)</span>
+                                        </div>
+                                        <p data-en="Your quota is running low" data-ar="حصتك منخفضة">Your quota
+                                            is running low</p>
+                                    </div>
+                                    $(endif)
+                                    <div class="product-item">
+                                        <div class="device-info">
+                                            <span data-en="Status refresh" data-ar="تحديث الحالة">Status
+                                                refresh</span>
+                                        </div>
+                                        <p>$(refresh-timeout)</p>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="device-info">
+                                            <span data-en="Hotsname" data-ar="اسم المضيف">Hotsname</span>
+                                        </div>
+                                        <p>$(hostname)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Language Selector -->
+                            <div class="language-selector">
+                                <div class="language-dropdown">
+                                    <div class="language-trigger" id="languageTrigger">
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <span class="flag-icon flag-uk" id="currentFlag"></span>
+                                            <span id="currentLanguage">English</span>
+                                        </div>
+                                        <div class="dropdown-arrow"></div>
+                                    </div>
+                                    <div class="language-options" id="languageOptions">
+                                        <div class="language-option selected" data-lang="en">
+                                            <span class="flag-icon flag-uk"></span>
+                                            <span>English</span>
+                                        </div>
+                                        <div class="language-option" data-lang="ar">
+                                            <span class="flag-icon flag-sa"></span>
+                                            <span>العربية</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Voucher Tab Content -->
+                        <div class="tab-content" id="product-values">
+                            <div class="header">
+                                <div class="logo">
+                                    <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
+                                </div>
+                                <div class="title">
+                                    <h1 data-en="Voucher Package" data-ar="حزمة القسائم">Voucher Package</h1>
+                                    <p data-en="Select your favorite package" data-ar="اختر الحزمة المفضلة لديك">Select
+                                        your favorite package</p>
+                                </div>
+                            </div>
+
+                            <div class="content-section">
+                                <div class="product-list">
+                                    <div class="product-item">
+                                        <div class="product-info">
+                                            <span>$1,00</span>
+                                            <span class="product-status valid" data-en="Unlimited"
+                                                data-ar="غير محدود">Unlimited</span>
+                                        </div>
+                                        <p data-en="1 Day" data-ar="يوم واحد">1 Day</p>
+                                        <code class="product-value"
+                                            data-en="Please go to the cashier to place your order"
+                                            data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="product-info">
+                                            <span>$2,00</span>
+                                            <span class="product-status valid" data-en="Unlimited"
+                                                data-ar="غير محدود">Unlimited</span>
+                                        </div>
+                                        <p data-en="2 Day" data-ar="يومان">2 Day</p>
+                                        <code class="product-value"
+                                            data-en="Please go to the cashier to place your order"
+                                            data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="product-info">
+                                            <span>$3,00</span>
+                                            <span class="product-status valid" data-en="Unlimited"
+                                                data-ar="غير محدود">Unlimited</span>
+                                        </div>
+                                        <p data-en="3 Day" data-ar="ثلاثة أيام">3 Day</p>
+                                        <code class="product-value"
+                                            data-en="Please go to the cashier to place your order"
+                                            data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Member Tab Content -->
+                        <div class="tab-content" id="subscriptions">
+                            <div class="header">
+                                <div class="logo">
+                                    <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
+                                </div>
+                                <div class="title">
+                                    <h1 data-en="Member Package" data-ar="حزمة العضوية">Member Package</h1>
+                                    <p data-en="Get longer internet access become a member"
+                                        data-ar="احصل على وصول أطول للإنترنت كعضو">Get longer internet access become a
+                                        member</p>
+                                </div>
+                            </div>
+
+                            <div class="content-section">
+                                <div class="product-list">
+                                    <div class="product-item">
+                                        <div class="product-info">
+                                            <span>$7,00</span>
+                                            <span class="product-status valid" data-en="Unlimited"
+                                                data-ar="غير محدود">Unlimited</span>
+                                        </div>
+                                        <p data-en="7 Day" data-ar="7 أيام">7 Day</p>
+                                        <code class="product-value"
+                                            data-en="Please go to the cashier to place your order"
+                                            data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="product-info">
+                                            <span>$15,00</span>
+                                            <span class="product-status valid" data-en="Unlimited"
+                                                data-ar="غير محدود">Unlimited</span>
+                                        </div>
+                                        <p data-en="15 Day" data-ar="15 يوم">15 Day</p>
+                                        <code class="product-value"
+                                            data-en="Please go to the cashier to place your order"
+                                            data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
+                                    </div>
+                                    <div class="product-item">
+                                        <div class="product-info">
+                                            <span>$30,00</span>
+                                            <span class="product-status valid" data-en="Unlimited"
+                                                data-ar="غير محدود">Unlimited</span>
+                                        </div>
+                                        <p data-en="30 Day" data-ar="30 يوم">30 Day</p>
+                                        <code class="product-value"
+                                            data-en="Please go to the cashier to place your order"
+                                            data-ar="يرجى الذهاب إلى الكاشير لتقديم طلبك">Please go to the cashier to place your order</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Links Tab Content -->
+                        <div class="tab-content" id="shareable-links">
+                            <div class="header">
+                                <div class="logo">
+                                    <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
+                                </div>
+                                <div class="title">
+                                    <h1 data-en="Contact" data-ar="اتصال">Contact</h1>
+                                    <p data-en="Need a help or want to get our services"
+                                        data-ar="تحتاج مساعدة أو تريد الحصول على خدماتنا">Need a help or want to get our
+                                        services</p>
+                                </div>
+                            </div>
+
+                            <div class="content-section">
+                                <h3 data-en="Follow Us" data-ar="تابعنا">Follow Us</h3>
+                                <div class="links-list">
+                                    <div class="link-item">
+                                        <div class="link-info">
+                                            <span>Instagram</span>
+                                        </div>
+                                        <p>pondenetofficial</p>
+                                        <div class="link-url">
+                                            <input class="form-control-sm" type="text"
+                                                value="https://www.instagram.com/@pondenetofficial/" readonly />
+                                            <button class="copy-btn" data-en="Copy" data-ar="نسخ">Copy</button>
+                                        </div>
+                                    </div>
+                                    <div class="link-item">
+                                        <div class="link-info">
+                                            <span>YouTube</span>
+                                        </div>
+                                        <p>pondenetytb</p>
+                                        <div class="link-url">
+                                            <input class="form-control-sm" type="text"
+                                                value="https://www.youtube.com/@pondenetytb" readonly />
+                                            <button class="copy-btn" data-en="Copy" data-ar="نسخ">Copy</button>
+                                        </div>
+                                    </div>
+                                    <div class="link-item">
+                                        <div class="link-info">
+                                            <span>WhatsApp</span>
+                                        </div>
+                                        <p data-en="Pondenet Customer Support" data-ar="Pondenet Customer Support">
+                                            Pondenet
+                                            Customer Support</p>
+                                        <div class="link-url">
+                                            <input class="form-control-sm" type="text"
+                                                value="https://wa.me/6282293449024?text=Hello%20can%20I%20asking,%20about%20product%20PondeNet?"
+                                                readonly />
+                                            <button class="copy-btn" data-en="Copy" data-ar="نسخ">Copy</button>
+                                        </div>
+                                    </div>
+                                    <div class="link-item">
+                                        <div class="link-info">
+                                            <span data-en="Email" data-ar="Email">Email</span>
+                                        </div>
+                                        <p data-en="Pondenet Customer Care" data-ar="customer.service@pondenet.com">
+                                            Pondenet
+                                            Customer Care</p>
+                                        <div class="link-url">
+                                            <input class="form-control-sm" type="text"
+                                                value="customer.service@pondenet.com" readonly />
+                                            <button class="copy-btn" data-en="Copy" data-ar="نسخ">Copy</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- General JS -->
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
