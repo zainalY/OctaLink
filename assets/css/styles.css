@@ -1127,7 +1127,8 @@ label {
 
     .card-content {
         padding: 16px;
-        max-height: 85vh;
+        /* max-height: 85vh; */
+        max-height: 100%;
     }
 
     .logo img {
@@ -1203,11 +1204,13 @@ label {
     }
 
     .container {
+        /* Padding default */
         padding: 0.5rem;
+        /* padding: 0; */
     }
 
     .card-content {
-        padding: 12px;
+        padding: 20px;
     }
 }
 
