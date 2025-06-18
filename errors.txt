@@ -23,36 +23,36 @@ config-error = configuration error ($(error-orig))
 # Will happen, if status or logout page is requested by user,
 # which actually is not logged in
 
-not-logged-in = Anda belum login (ip $(ip))
+not-logged-in = You are not logged in yet (ip $(ip))
 
 # ippool-empty
 # IP address for user is to be assigned from ip pool, but there are no more
 # addresses in that pool
 
-ippool-empty = Tidak dapat mengalokasikan identitas IP
+ippool-empty = Unable to allocate IP identity
 
 # shutting-down
 # When shutdown is executed, new clients are not accepted
 
-shutting-down = BSH-Hotspot dalam perawatan
+shutting-down = BSH-Hotspot in care
 
 # user-session-limit
 # If user profile has limit of shared-users, then this error will be shown
 # after reaching this limit
 
-user-session-limit = Maaf User ID $(username) sudah digunakan (sedang login di perangkat lain)
+user-session-limit = Sorry User ID $(username) is already in use (currently logged in on another device)
 
 # license-session-limit
 # Depending on licence number of active hotspot clients is limited to
 # one or another amount. If this limit is reached, following error is displayed.
 
-license-session-limit = Batas sesi telah tercapai  ($(error-orig))
+license-session-limit = The session limit has been reached  ($(error-orig))
 
 # wrong-mac-username
 # If username looks like MAC address (12:34:56:78:9a:bc), but is not
 # a MAC address of this client, login is rejected
 
-wrong-mac-username = invalid username ($(username)): MAC address ini bukan milik anda
+wrong-mac-username = invalid username ($(username)): This MAC address does not belong to you
 
 # chap-missing
 # If http-chap login method is used, but hotspot program does not receive
@@ -65,14 +65,14 @@ wrong-mac-username = invalid username ($(username)): MAC address ini bukan milik
 # If JavaScript is enabled and login.html page is valid,
 # then retrying to login usually fixes this problem.
 
-chap-missing = Silahkan reload dan coba lagi
+chap-missing = Please reload and try again
 
 # invalid-username
 # Most general case of invalid username or password. If RADIUS server
 # has sent an error string with Access-Reject message, then it will
 # override this setting.
 
-invalid-username = Maaf, User ID atau Password Anda salah
+invalid-username = Sorry, your User ID or Password is incorrect
 
 # invalid-mac
 # Local users (on hotspot server) can be bound to some MAC address. If login
@@ -83,14 +83,14 @@ invalid-mac = user $(username) is not allowed to log in from this MAC address
 # uptime-limit, traffic-limit
 # For local hotspot users in case if limits are reached
 
-uptime-limit = user $(username), waktu pemakaian sudah habis
-traffic-limit = user $(username), kuota anda sudah habis
+uptime-limit = user $(username), usage time is up
+traffic-limit = user $(username), your quota has run out
 
 # radius-timeout
 # User is authenticated by RADIUS server, but no response is received from it,
 # following error will be shown.
 
-radius-timeout = RADIUS server is not responding (Silahkan hubungi Admin)
+radius-timeout = RADIUS server is not responding (Please contact Admin)
 
 # auth-in-progress
 # Authorization in progress. Client already has issued an authorization request

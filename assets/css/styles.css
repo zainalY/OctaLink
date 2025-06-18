@@ -38,6 +38,7 @@
 :root {
     --primary: #007AFF;
     --primary-gradient: linear-gradient(180deg, #2991ff 0%, #047aff 100%);
+    --secondary: #202020;
     --white: #FAFAFB;
     --alert-bg: #e0687c29;
     --alert-border: #e0687c29;
@@ -415,13 +416,33 @@ input:focus {
     z-index: 1;
 }
 
-.btn-primary:hover::before {
-    opacity: 1;
-}
-
 .btn-primary:focus {
     outline: none;
     box-shadow: 0 0 0 2px rgba(56, 152, 255, 0.3);
+}
+
+.btn-secondary {
+    height: 38px;
+    /* background: linear-gradient(to right, #3898FF, #7A5FFF); */
+    background: var(--secondary);
+    border: none;
+    border-radius: 6px;
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-secondary:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(24, 26, 27, 0.3);
 }
 
 .shortcut {
@@ -1402,4 +1423,32 @@ label {
     100% {
         background-color: transparent;
     }
+}
+
+
+
+
+
+
+/* ADD CSS */
+.border-hr-container {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 4px 0px;
+}
+
+.border-hr-lr {
+    display: inline-block;
+    border: 0.5px solid var(--NN1000, rgba(255, 255, 255, 0.12));
+    width: 50%;
+}
+
+
+.border-hr-text {
+    font-size: 0.857143rem;
+    text-align: center;
+    color: var(--NN1000, rgba(255, 255, 255, 0.38));
+    padding: 0px 18px;
+    white-space: nowrap;
 }
