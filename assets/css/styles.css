@@ -1452,3 +1452,19 @@ label {
     padding: 0px 18px;
     white-space: nowrap;
 }
+
+
+
+/* Read User for Terms & Privacy */
+.read-users h2 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: var(--white);
+}
+
+.read-users p {
+    font-size: 13px;
+    color: #D0D6E0;
+    line-height: 22px;
+}

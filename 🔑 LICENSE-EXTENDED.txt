@@ -1,0 +1,23 @@
+Extended License
+
+This license grants commercial rights to use the MikroTik login page template as part of your service or SaaS offering — without attribution and for unlimited use across routers and clients.
+
+✅ You are allowed to:
+- Use this template as part of a commercial hotspot business or SaaS.
+- Deploy on unlimited MikroTik routers and locations.
+- Use without credit or attribution.
+- Customize and brand the template for your clients.
+
+❌ You are NOT allowed to:
+- Sell or redistribute the template as a standalone product or template.
+- Include the template as part of a theme pack or resale kit.
+- Offer this template in any franchise model where other businesses receive copies.
+- Publish the source code in public or private marketplaces.
+
+If you're unsure whether your use case is allowed under this license, please contact us before proceeding.
+
+(C) 2025 Your Name / Your Brand  
+
+Email: customer.service@pondenet.com
+YouTube: https://www.youtube.com/@pondenetYtb
+Website: https://pondenet.com/
