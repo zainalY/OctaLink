@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>OctaLink - Status</title>
+    <title>OctaLink - Logout</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="application-name" content="OctaLink">
     <meta name="application-name" content="OctaLink">
@@ -33,11 +33,11 @@
 
                     <!-- Navigation tabs -->
                     <nav class="tabs">
-                        <div class="tab" data-tab="general" onclick="location.href='logout.html?erase-cookie=true';">
-                            <img src="assets/img/logout-icon.svg" alt="General icon" />
-                            <span data-en="Logout" data-ar="تسجيل الخروج">Logout</span>
+                        <div class="tab" data-tab="general" onclick="location.href='login.html';">
+                            <img src="assets/img/login-icon.svg" alt="General icon" />
+                            <span data-en="Login" data-ar="تسجيل الدخول">Login</span>
                         </div>
-                        <div class="tab active" data-tab="devices">
+                        <div class="tab" data-tab="devices" onclick="location.href='status.html';">
                             <img src="assets/img/status-icon.svg" alt="Devices icon" />
                             <span data-en="Status" data-ar="الحالة">Status</span>
                         </div>
@@ -56,91 +56,102 @@
                     </nav>
 
                     <div class="card-content">
-                        <!-- Status Tab Content -->
-                        <div class="tab-content active" id="devices">
+                        <!-- Login Tab Content -->
+                        <div class="tab-content active" id="general">
                             <div class="header">
                                 <div class="logo">
                                     <img src="assets/img/OctaLink-Logo.png" alt="Logo" />
                                 </div>
                                 <div class="title">
-                                    <h1 data-en="Information Connection" data-ar="معلومات الاتصال">Information
-                                        Connection</h1>
-                                    <p data-en="Overview your network information"
-                                        data-ar="نظرة عامة على معلومات الشبكة">Overview your network information</p>
+                                    <h1 data-en="Terms of Use" data-ar="شروط الاستخدام">Terms of Use</h1>
+                                    <p data-en="Latest update 19 Jun 2025" data-ar="آخر تحديث ١٩ يونيو ٢٠٢٥">Latest
+                                        update 19 Jun 2025</p>
                                 </div>
                             </div>
 
                             <div class="content-section">
-                                <div class="device-list">
-                                    $(if remain-bytes-total)
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="Remaining quota" data-ar="الحصة المتبقية">Remaining
-                                                quota</span>
-                                            <span class="device-status inactive">$(remain-bytes-total-nice)</span>
-                                        </div>
-                                        <p data-en="Your quota is running low" data-ar="حصتك منخفضة">Your quota is
-                                            running low</p>
-                                    </div>
-                                    $(endif)
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="Connected Time" data-ar="الوقت المتصل">Connected Time</span>
-                                        </div>
-                                        <p>$(uptime)</p>
-                                    </div>
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="Username" data-ar="اسم المستخدم">Username</span>
-                                        </div>
-                                        <p>$(username)</p>
-                                    </div>
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="IP Address" data-ar="عنوان IP">IP Address</span>
-                                        </div>
-                                        <p>$(ip)</p>
-                                    </div>
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="MAC Address" data-ar="عنوان MAC">MAC Address</span>
-                                        </div>
-                                        <p>$(mac)</p>
-                                    </div>
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="Upload" data-ar="الرفع">Upload</span>
-                                        </div>
-                                        <p>$(bytes-out-nice)</p>
-                                    </div>
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="Download" data-ar="التحميل">Download</span>
-                                        </div>
-                                        <p>$(bytes-in-nice)</p>
-                                    </div>
-
-                                    $(if session-time-left)
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="Status refresh" data-ar="تحديث الحالة">Sisa Waktu</span>
-                                        </div>
-                                        <p>$(session-time-left)</p>
-                                    </div>
-                                    $(endif)
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="Status refresh" data-ar="تحديث الحالة">Status
-                                                refresh</span>
-                                        </div>
-                                        <p>$(refresh-timeout)</p>
-                                    </div>
-                                    <div class="product-item">
-                                        <div class="device-info">
-                                            <span data-en="Hotsname" data-ar="اسم المضيف">Hotsname</span>
-                                        </div>
-                                        <p>$(hostname)</p>
-                                    </div>
+                                <div class="read-users">
+                                    <h2 data-en="1. Acceptable Use" data-ar="١. الاستخدام المقبول">1. Acceptable Use
+                                    </h2>
+                                    <p data-en="1.1. You agree to use this internet connection for lawful and appropriate purposes only."
+                                        data-ar="١.١. أنت توافق على استخدام هذا الاتصال بالإنترنت لأغراض قانونية ومناسبة فقط.">
+                                        1.1. You agree to use this internet connection for lawful and appropriate
+                                        purposes
+                                        only.
+                                    </p>
+                                    <p data-en="1.2. Activities such as hacking, distributing malware, or accessing illegal content are strictly prohibited."
+                                        data-ar="١.٢. الأنشطة مثل الاختراق، توزيع البرامج الضارة، أو الوصول إلى محتوى غير قانوني محظورة تمامًا.">
+                                        1.2. Activities such as hacking, distributing malware, or accessing illegal
+                                        content
+                                        are strictly prohibited.
+                                    </p>
+                                    <p data-en="1.3. We reserve the right to block or restrict access at any time without notice."
+                                        data-ar="١.٣. نحتفظ بالحق في حظر أو تقييد الوصول في أي وقت دون إشعار.">
+                                        1.3. We reserve the right to block or restrict access at any time without
+                                        notice.
+                                    </p>
+                                    <br>
+                                    <h2 data-en="2. Data Privacy" data-ar="٢. خصوصية البيانات">2. Data Privacy</h2>
+                                    <p data-en="2.1. Your device information (such as MAC address, IP address) may be logged for security and usage analysis."
+                                        data-ar="٢.١. قد يتم تسجيل معلومات جهازك (مثل عنوان MAC أو IP) لأغراض الأمان وتحليل الاستخدام.">
+                                        2.1. Your device information (such as MAC address, IP address) may be logged for
+                                        security and usage analysis.
+                                    </p>
+                                    <p data-en="2.2. If you are required to enter personal data (such as name or email), it will only be used to provide network access or for administrative purposes."
+                                        data-ar="٢.٢. إذا طُلب منك إدخال بيانات شخصية (مثل الاسم أو البريد الإلكتروني)، فستُستخدم فقط لتوفير الوصول إلى الشبكة أو لأغراض إدارية.">
+                                        2.2. If you are required to enter personal data (such as name or email), it will
+                                        only be used to provide network access or for administrative purposes.
+                                    </p>
+                                    <p data-en="2.3. We do not sell or share your data with third parties."
+                                        data-ar="٢.٣. نحن لا نبيع أو نشارك بياناتك مع أطراف ثالثة.">
+                                        2.3. We do not sell or share your data with third parties.
+                                    </p>
+                                    <br>
+                                    <h2 data-en="3. Speed & Limitations" data-ar="٣. السرعة والقيود">3. Speed &
+                                        Limitations
+                                    </h2>
+                                    <p data-en="3.1. Connection speed and availability may vary depending on network load."
+                                        data-ar="٣.١. قد تختلف سرعة الاتصال وتوفره حسب ضغط الشبكة.">
+                                        3.1. Connection speed and availability may vary depending on network load.
+                                    </p>
+                                    <p data-en="3.2. Bandwidth limits may apply, and certain services (e.g., torrenting) may be restricted."
+                                        data-ar="٣.٢. قد يتم تطبيق حدود النطاق الترددي، وقد يتم تقييد بعض الخدمات مثل التورنت.">
+                                        3.2. Bandwidth limits may apply, and certain services (e.g., torrenting) may be
+                                        restricted.
+                                    </p>
+                                    <br>
+                                    <h2 data-en="4. Disclaimer" data-ar="٤. إخلاء المسؤولية">4. Disclaimer</h2>
+                                    <p data-en="4.1. This Wi-Fi service is provided 'as is' without warranties of any kind."
+                                        data-ar="٤.١. يتم تقديم خدمة الواي فاي هذه 'كما هي' دون أي ضمانات من أي نوع.">
+                                        4.1. This Wi-Fi service is provided 'as is' without warranties of any kind.
+                                    </p>
+                                    <p data-en="4.2. We are not responsible for any data loss, interruptions, or damage caused while using this network."
+                                        data-ar="٤.٢. لسنا مسؤولين عن أي فقدان للبيانات أو انقطاع أو ضرر يحدث أثناء استخدام هذه الشبكة.">
+                                        4.2. We are not responsible for any data loss, interruptions, or damage caused
+                                        while
+                                        using this network.
+                                    </p>
+                                    <br>
+                                    <h2 data-en="5. Changes to Terms" data-ar="٥. التغييرات على الشروط">5. Changes to
+                                        Terms
+                                    </h2>
+                                    <p data-en="5.1. These terms may be updated at any time without prior notice. Please review this page periodically."
+                                        data-ar="٥.١. قد يتم تحديث هذه الشروط في أي وقت دون إشعار مسبق. يرجى مراجعة هذه الصفحة بشكل دوري.">
+                                        5.1. These terms may be updated at any time without prior notice. Please review
+                                        this
+                                        page periodically.
+                                    </p>
+                                    <p data-en="5.2. By proceeding to log in or use this connection, you confirm that you agree to these terms."
+                                        data-ar="٥.٢. من خلال المتابعة لتسجيل الدخول أو استخدام هذا الاتصال، فإنك تؤكد أنك توافق على هذه الشروط.">
+                                        5.2. By proceeding to log in or use this connection, you confirm that you agree
+                                        to
+                                        these terms.
+                                    </p>
+                                    <br>
+                                    <p data-en="Thank you for using our Wi-Fi service."
+                                        data-ar="شكرًا لاستخدامك خدمة الواي فاي الخاصة بنا.">
+                                        Thank you for using our Wi-Fi service.
+                                    </p>
                                 </div>
                             </div>
                             <!-- Language Selector -->
@@ -348,148 +359,6 @@
     </main>
     <!-- General JS -->
     <script src="assets/js/app.js"></script>
-    <script>
-        // // Wait for the page to load
-        // window.addEventListener('DOMContentLoaded', function () {
-        //     // 1. Get MikroTik's remaining quota in "nice" format (e.g., "95.3M")
-        //     const niceBytes = '$(remain-bytes-total-nice)'.trim();
-
-        //     // 2. Convert "nice" format (e.g., "95.3M") to raw bytes
-        //     function niceToBytes(nice) {
-        //         const num = parseFloat(nice.replace(/[^0-9.]/g, ''));
-        //         if (nice.includes('G')) return num * 1073741824; // GiB → bytes
-        //         if (nice.includes('M')) return num * 1048576;    // MiB → bytes
-        //         if (nice.includes('K')) return num * 1024;       // KiB → bytes
-        //         return num; // Assume bytes if no unit
-        //     }
-
-        //     const remainBytes = niceToBytes(niceBytes);
-        //     const thresholdBytes = 5.5 * 1048576; // 5.5 MiB in bytes
-
-        //     // 3. Find the quota message element (MikroTik default)
-        //     const quotaMessage = document.querySelector('.status-message') ||
-        //         document.querySelector('p[data-en="Your quota is running low"]') ||
-        //         document.createElement('p');
-
-        //     // 4. Create a progress bar
-        //     const progressBar = document.createElement('div');
-        //     progressBar.style.cssText = `
-        //     height: 4px;
-        //     background: ${remainBytes < thresholdBytes ? '#ff4d4d' : '#4CAF50'};
-        //     width: ${Math.min(100, (remainBytes / thresholdBytes) * 100)}%;
-        //     border-radius: 6px;
-        //     transition: all 0.3s ease;
-        //     `;
-
-        //     // 5. Progress bar container
-        //     const progressContainer = document.createElement('div');
-        //     progressContainer.style.cssText = `
-        //     width: 100%;
-        //     background: #555555;
-        //     border-radius: 99px;
-        //     margin: 8px 0;
-        //     `;
-        //     progressContainer.appendChild(progressBar);
-
-        //     // 6. Quota info label
-        //     const quotaInfo = document.createElement('div');
-        //     quotaInfo.style.cssText = `
-        //     font-size: 12px;
-        //     color: #555;
-        //     text-align: left;
-        //     margin-top: 4px;
-        //     `;
-        //     quotaInfo.textContent = `${niceBytes} remaining`;
-
-        //     // 7. Update message based on quota
-        //     if (remainBytes < thresholdBytes) {
-        //         quotaMessage.textContent = 'Your quota is running out!';
-        //         quotaMessage.style.color = '#ff4d4d';
-        //     } else {
-        //         quotaMessage.textContent = 'Quota is sufficient';
-        //         quotaMessage.style.color = '#4CAF50';
-        //     }
-
-        //     // 8. Inject into the page
-        //     quotaMessage.insertAdjacentElement('afterend', progressContainer);
-        //     progressContainer.insertAdjacentElement('afterend', quotaInfo);
-        // });
-
-        // Wait for the page to load
-        window.addEventListener('DOMContentLoaded', function () {
-            // 1. Configuration
-            const THRESHOLD_MiB = 20.5;          // Warning threshold (20.5 MiB)
-            const UPDATE_INTERVAL = 3000;        // Check every 3 seconds
-
-            // 2. Convert "nice" format (e.g., "95.3M") to bytes
-            function niceToBytes(nice) {
-                const num = parseFloat(nice.replace(/[^0-9.]/g, ''));
-                if (nice.includes('G')) return num * 1073741824;
-                if (nice.includes('M')) return num * 1048576;
-                if (nice.includes('K')) return num * 1024;
-                return num;
-            }
-
-            // 3. Create the progress bar UI (same as your original)
-            const quotaMessage = document.querySelector('.status-message') ||
-                document.querySelector('p[data-en="Your quota is running low"]') ||
-                document.createElement('p');
-
-            const progressBar = document.createElement('div');
-            progressBar.style.cssText = `
-            height: 4px;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            `;
-
-            const progressContainer = document.createElement('div');
-            progressContainer.style.cssText = `
-            width: 100%;
-            background: #555555;
-            border-radius: 99px;
-            margin: 8px 0;
-            `;
-            progressContainer.appendChild(progressBar);
-
-            const quotaInfo = document.createElement('div');
-            quotaInfo.style.cssText = `
-            font-size: 12px;
-            color: #555;
-            text-align: left;
-            margin-top: 4px;
-            `;
-
-            // Inject into the page
-            quotaMessage.insertAdjacentElement('afterend', progressContainer);
-            progressContainer.insertAdjacentElement('afterend', quotaInfo);
-
-            // 4. Function to update the quota display
-            function updateQuota() {
-                // Get the latest value (MikroTik will replace $(remain-bytes-total-nice) on each refresh)
-                const niceBytes = '$(remain-bytes-total-nice)'.trim();
-                const remainBytes = niceToBytes(niceBytes);
-                const thresholdBytes = THRESHOLD_MiB * 1048576;
-                const percentage = Math.min(100, (remainBytes / thresholdBytes) * 100);
-
-                // Update progress bar
-                progressBar.style.width = `${percentage}%`;
-                progressBar.style.background = remainBytes < thresholdBytes ? '#ff4d4d' : '#4CAF50';
-
-                // Update message
-                quotaMessage.textContent = remainBytes < thresholdBytes
-                    ? 'Your quota is running out!'
-                    : 'Quota is sufficient';
-                quotaMessage.style.color = remainBytes < thresholdBytes ? '#ff4d4d' : '#4CAF50';
-
-                // Update info text
-                quotaInfo.textContent = `${niceBytes} remaining`;
-            }
-
-            // 5. Initialize and update periodically
-            updateQuota();
-            setInterval(updateQuota, UPDATE_INTERVAL);
-        });
-    </script>
 </body>
 
 </html>
